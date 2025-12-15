@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devarsons - Break the Shackles</title>
+    <title>Devarsons - Molecular Innovation Since 1923</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -102,8 +102,8 @@ body {
     to { opacity: 0; visibility: hidden; }
 }
 
-/* MOLECULAR CANVAS - DOMINANT */
-.molecular-canvas {
+/* MOLECULAR NETWORK - CORE METAPHOR */
+.molecular-network {
     position: fixed;
     top: 0;
     left: 0;
@@ -113,76 +113,105 @@ body {
     pointer-events: none;
 }
 
-.molecule-large {
+.molecule-node {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     background: var(--gold);
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    animation: moleculeFloat 25s infinite ease-in-out;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.4);
+    animation: pulse 4s infinite ease-in-out;
 }
 
-.molecule-large::before,
-.molecule-large::after {
-    content: '';
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+.molecule-bond {
     position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
-    top: 50%;
-    left: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    transform-origin: left center;
+    opacity: 0.3;
+    animation: bondPulse 6s infinite ease-in-out;
 }
 
-.molecule-large::before { transform: translate(-50%, -50%) rotate(45deg); }
-.molecule-large::after { transform: translate(-50%, -50%) rotate(-45deg); }
-
-@keyframes moleculeFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
-    25% { transform: translate(50px, -50px) rotate(90deg); opacity: 0.6; }
-    50% { transform: translate(-30px, 30px) rotate(180deg); opacity: 0.4; }
-    75% { transform: translate(60px, 20px) rotate(270deg); opacity: 0.7; }
+@keyframes bondPulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
 }
 
-/* HEADER - MINIMAL */
-header {
+/* MOLECULAR NAVIGATION */
+.molecular-nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    top: 50%;
+    right: 4rem;
+    transform: translateY(-50%);
     z-index: 1000;
     opacity: 0;
-    transform: translateY(-100%);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-header.visible { opacity: 1; transform: translateY(0); }
+.molecular-nav.visible {
+    animation: fadeIn 1s ease-out 1s forwards;
+}
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 4rem;
-    max-width: 1800px;
-    margin: 0 auto;
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.nav-node {
+    width: 12px;
+    height: 12px;
+    background: rgba(212, 175, 55, 0.3);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    margin: 2rem 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-node:hover,
+.nav-node.active {
+    background: var(--gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+    transform: scale(1.5);
+}
+
+.nav-label {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.nav-node:hover .nav-label {
+    opacity: 1;
+}
+
+/* HEADER - MINIMAL LOGO ONLY */
+.minimal-header {
+    position: fixed;
+    top: 2rem;
+    left: 4rem;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.minimal-header.visible {
+    animation: fadeIn 1s ease-out 1s forwards;
 }
 
 .logo-img { height: 50px; }
-
-nav ul { display: flex; gap: 2.5rem; list-style: none; }
-nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: color 0.3s;
-}
-nav a:hover { color: var(--gold); }
 
 /* MAIN CONTENT */
 main {
@@ -193,61 +222,68 @@ main {
 
 main.visible { animation: fadeIn 1s ease-out forwards; }
 
-@keyframes fadeIn { to { opacity: 1; } }
-
-/* HERO - UNCONVENTIONAL */
-.hero-unconventional {
+/* HERO - MOLECULAR STRUCTURE */
+.hero-molecular {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    position: relative;
     padding: 0 4rem;
-    max-width: 1800px;
-    margin: 0 auto;
+}
+
+.hero-content-center {
+    text-align: center;
+    max-width: 1200px;
+}
+
+.hero-statement-large {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+}
+
+.hero-statement-large .molecular-highlight {
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
     position: relative;
 }
 
-.hero-left {
-    transform: rotate(-2deg);
+.hero-stats-molecular {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    margin-top: 4rem;
 }
 
-.hero-statement {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.3;
-    color: rgba(255, 255, 255, 0.9);
+.stat-molecular {
+    text-align: center;
 }
 
-.hero-statement strong {
+.stat-number-large {
+    font-size: clamp(4rem, 8vw, 7rem);
     font-weight: 900;
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: block;
+    line-height: 1;
 }
 
-.hero-right {
-    text-align: right;
-    transform: rotate(2deg);
-}
-
-.hero-stat {
-    font-size: clamp(6rem, 12vw, 10rem);
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 0.9;
-}
-
-.hero-stat-label {
-    font-size: 1.5rem;
+.stat-label-large {
+    font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.6);
     margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-/* HERITAGE - MASSIVE */
-.heritage-massive {
+/* HERITAGE - MASSIVE MOLECULAR */
+.heritage-molecular {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -257,131 +293,35 @@ main.visible { animation: fadeIn 1s ease-out forwards; }
     padding: 4rem;
 }
 
-.heritage-year-huge {
-    font-size: clamp(12rem, 25vw, 20rem);
+.heritage-year-massive {
+    font-size: clamp(15rem, 30vw, 25rem);
     font-weight: 900;
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 0.9;
-    margin-bottom: 2rem;
+    line-height: 0.8;
+    margin-bottom: 3rem;
+    position: relative;
 }
 
-.heritage-statement {
-    font-size: clamp(1.8rem, 3.5vw, 3rem);
+.heritage-statement-large {
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.8);
-    max-width: 1000px;
-    margin: 0 auto 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+    line-height: 1.4;
 }
 
-.heritage-emphasis {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+.heritage-emphasis-large {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 900;
     color: var(--white);
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
-/* DIAGONAL SPLIT SECTION */
-.diagonal-split {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    position: relative;
-    overflow: hidden;
-}
-
-.diagonal-left {
-    background: var(--black);
-    padding: 6rem 4rem;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-    position: relative;
-    z-index: 2;
-}
-
-.diagonal-right {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-    padding: 6rem 4rem;
-    display: flex;
-    align-items: center;
-}
-
-.section-title-large {
-    font-size: clamp(3rem, 6vw, 5rem);
-    font-weight: 900;
-    margin-bottom: 3rem;
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
-}
-
-.content-text {
-    font-size: 1.2rem;
-    line-height: 1.9;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 2rem;
-}
-
-/* INDUSTRIES - BROKEN GRID */
-.industries-broken {
-    padding: 8rem 4rem;
-    max-width: 1800px;
-    margin: 0 auto;
-}
-
-.industries-grid-broken {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 2rem;
-    margin-top: 4rem;
-}
-
-.industry-card-broken {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 3rem 2rem;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-.industry-card-broken:hover {
-    background: var(--gold);
-    color: var(--black);
-    transform: scale(1.05);
-    z-index: 10;
-}
-
-.industry-card-broken:nth-child(1) { grid-column: 1 / 5; grid-row: 1; }
-.industry-card-broken:nth-child(2) { grid-column: 5 / 9; grid-row: 1; }
-.industry-card-broken:nth-child(3) { grid-column: 9 / 13; grid-row: 1; }
-.industry-card-broken:nth-child(4) { grid-column: 1 / 7; grid-row: 2; }
-.industry-card-broken:nth-child(5) { grid-column: 7 / 13; grid-row: 2; }
-.industry-card-broken:nth-child(6) { grid-column: 1 / 5; grid-row: 3; }
-.industry-card-broken:nth-child(7) { grid-column: 5 / 9; grid-row: 3; }
-.industry-card-broken:nth-child(8) { grid-column: 9 / 13; grid-row: 3; }
-
-.industry-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-.industry-name { font-size: 1.8rem; font-weight: 900; margin-bottom: 1rem; text-transform: uppercase; }
-.industry-desc { font-size: 0.95rem; line-height: 1.6; opacity: 0.8; }
-
-.industry-details-hidden {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.85rem;
-}
-
-.industry-card-broken:hover .industry-details-hidden {
-    max-height: 200px;
-}
-
-/* QUOTE - MASSIVE */
-.quote-massive {
+/* QUOTE - MOLECULAR FRAME */
+.quote-molecular {
     min-height: 80vh;
     display: flex;
     align-items: center;
@@ -391,10 +331,10 @@ main.visible { animation: fadeIn 1s ease-out forwards; }
     position: relative;
 }
 
-.quote-text-huge {
+.quote-text-molecular {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
     line-height: 1.3;
     color: var(--white);
     max-width: 1200px;
@@ -402,247 +342,525 @@ main.visible { animation: fadeIn 1s ease-out forwards; }
     position: relative;
 }
 
-.quote-text-huge::before {
+.quote-text-molecular::before {
     content: '"';
     position: absolute;
-    top: -5rem;
-    left: -3rem;
-    font-size: 18rem;
+    top: -4rem;
+    left: -2rem;
+    font-size: 16rem;
     color: var(--gold);
-    opacity: 0.1;
+    opacity: 0.08;
     font-family: Georgia;
 }
 
-.quote-author {
-    font-size: 1.5rem;
+.quote-author-molecular {
+    font-size: 1.4rem;
     color: var(--gold);
     font-weight: 700;
+    font-style: normal;
 }
 
-/* TIMELINE - VERTICAL ASYMMETRIC */
-.timeline-asymmetric {
+/* CONTENT SECTIONS - MOLECULAR FLOW */
+.section-molecular {
+    min-height: 100vh;
     padding: 8rem 4rem;
+    max-width: 1800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section-title-molecular {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    text-align: center;
+}
+
+.content-grid-molecular {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+/* INDUSTRIES - MOLECULAR GRID */
+.industry-molecular {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 3rem 2rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-molecular::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    opacity: 0;
+    transition: all 0.6s;
+    transform: translate(-50%, -50%);
+}
+
+.industry-molecular:hover::before {
+    width: 300%;
+    height: 300%;
+    opacity: 0.15;
+}
+
+.industry-molecular:hover {
+    border-color: var(--gold);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+}
+
+.industry-molecular:nth-child(1) { grid-column: 1 / 5; }
+.industry-molecular:nth-child(2) { grid-column: 5 / 9; }
+.industry-molecular:nth-child(3) { grid-column: 9 / 13; }
+.industry-molecular:nth-child(4) { grid-column: 1 / 7; }
+.industry-molecular:nth-child(5) { grid-column: 7 / 13; }
+.industry-molecular:nth-child(6) { grid-column: 1 / 5; }
+.industry-molecular:nth-child(7) { grid-column: 5 / 9; }
+.industry-molecular:nth-child(8) { grid-column: 9 / 13; }
+
+.industry-icon-molecular {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.industry-name-molecular {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+.industry-desc-molecular {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+}
+
+.industry-details-molecular {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+}
+
+.industry-molecular:hover .industry-details-molecular {
+    max-height: 300px;
+}
+
+/* TIMELINE - MOLECULAR CHAIN */
+.timeline-molecular {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 4rem 0;
 }
 
-.timeline-item {
+.timeline-chain {
+    position: relative;
+}
+
+.timeline-chain::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+    transform: translateX(-50%);
+}
+
+.timeline-node {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 4rem;
-    margin-bottom: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-bottom: 5rem;
+    position: relative;
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateY(50px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.timeline-item.visible { opacity: 1; transform: translateX(0); }
-
-.timeline-item:nth-child(even) {
-    grid-template-columns: 1fr 300px;
-    transform: translateX(50px);
+.timeline-node.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.timeline-item:nth-child(even) .timeline-year { order: 2; text-align: right; }
-.timeline-item:nth-child(even) .timeline-content { order: 1; text-align: right; }
+.timeline-node::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    width: 20px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+    z-index: 2;
+}
 
-.timeline-year {
+.timeline-node:nth-child(even) .timeline-year-molecular {
+    order: 2;
+    text-align: right;
+}
+
+.timeline-node:nth-child(even) .timeline-content-molecular {
+    order: 1;
+    text-align: right;
+}
+
+.timeline-year-molecular {
     font-size: 5rem;
     font-weight: 900;
     color: var(--gold);
     line-height: 1;
 }
 
-.timeline-content {
+.timeline-content-molecular {
     font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
+    padding-top: 1rem;
 }
 
-/* APPLICATION TABLE - UNCONVENTIONAL */
-.applications-unconventional {
-    padding: 8rem 4rem;
-    max-width: 1800px;
-    margin: 0 auto;
-}
-
-.app-grid {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1px;
-    background: var(--gold);
-    margin-top: 4rem;
-}
-
-.app-row {
-    display: contents;
-}
-
-.app-industry {
-    background: var(--black);
-    padding: 2rem;
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-}
-
-.app-list {
-    background: var(--black);
-    padding: 2rem;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.8;
-}
-
-.app-row:hover .app-industry,
-.app-row:hover .app-list {
-    background: rgba(212, 175, 55, 0.1);
-}
-
-/* CAPABILITIES - SCATTERED */
-.capabilities-scattered {
-    padding: 8rem 4rem;
-    max-width: 1800px;
-    margin: 0 auto;
-    position: relative;
-    min-height: 80vh;
-}
-
-.capability-item {
-    position: absolute;
-    padding: 2rem 3rem;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-    border: 1px solid var(--gold);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--gold);
-    transition: all 0.3s;
-    cursor: default;
-}
-
-.capability-item:hover {
-    background: var(--gold);
-    color: var(--black);
-    transform: scale(1.1);
-    z-index: 10;
-}
-
-.cap1 { top: 10%; left: 5%; }
-.cap2 { top: 15%; right: 10%; }
-.cap3 { top: 30%; left: 15%; }
-.cap4 { top: 35%; right: 5%; }
-.cap5 { top: 50%; left: 25%; }
-.cap6 { top: 55%; right: 20%; }
-.cap7 { top: 70%; left: 10%; }
-.cap8 { top: 75%; right: 15%; }
-.cap9 { top: 85%; left: 30%; }
-
-/* CERTIFICATIONS - BOLD BLOCKS */
-.certifications-bold {
-    padding: 8rem 4rem;
-    max-width: 1800px;
-    margin: 0 auto;
-}
-
-.cert-grid {
+/* PRODUCT LINES - MOLECULAR STRUCTURE */
+.products-molecular {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--gold);
+    gap: 2rem;
     margin-top: 4rem;
 }
 
-.cert-block {
-    background: var(--black);
-    padding: 4rem 2rem;
+.product-node {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 2.5rem 2rem;
     text-align: center;
     transition: all 0.3s;
     cursor: pointer;
 }
 
-.cert-block:hover {
-    background: var(--gold);
-    color: var(--black);
+.product-node:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold);
+    transform: scale(1.05);
 }
 
-.cert-title {
-    font-size: 2.5rem;
+.product-name-molecular {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+}
+
+.product-detail-molecular {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* APPLICATION TABLE - MOLECULAR BONDS */
+.app-table-molecular {
+    margin-top: 4rem;
+    border: 2px solid var(--gold);
+}
+
+.app-row-molecular {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s;
+}
+
+.app-row-molecular:last-child {
+    border-bottom: none;
+}
+
+.app-row-molecular:hover {
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.app-industry-molecular {
+    padding: 2.5rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    border-right: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+}
+
+.app-list-molecular {
+    padding: 2.5rem 2rem;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.9;
+}
+
+/* CAPABILITIES - MOLECULAR SCATTER */
+.capabilities-molecular {
+    position: relative;
+    min-height: 90vh;
+    margin-top: 6rem;
+}
+
+.capability-node {
+    position: absolute;
+    padding: 2rem 3rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
+    border: 2px solid var(--gold);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    transition: all 0.4s;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.capability-node:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 15px 50px rgba(212, 175, 55, 0.5);
+}
+
+.cap-1 { top: 8%; left: 5%; }
+.cap-2 { top: 12%; right: 8%; }
+.cap-3 { top: 28%; left: 12%; }
+.cap-4 { top: 32%; right: 5%; }
+.cap-5 { top: 48%; left: 20%; }
+.cap-6 { top: 52%; right: 18%; }
+.cap-7 { top: 68%; left: 8%; }
+.cap-8 { top: 72%; right: 12%; }
+.cap-9 { top: 85%; left: 25%; }
+
+/* LAB EQUIPMENT - MOLECULAR GRID */
+.lab-equipment-molecular {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.lab-item-molecular {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.lab-item-molecular:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.lab-name-molecular {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.4;
+}
+
+/* CERTIFICATIONS - MOLECULAR BLOCKS */
+.cert-molecular-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    background: var(--gold);
+    margin-top: 4rem;
+}
+
+.cert-molecular-block {
+    background: var(--black);
+    padding: 4rem 2rem;
+    text-align: center;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.cert-molecular-block:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: scale(1.05);
+}
+
+.cert-title-molecular {
+    font-size: 2.8rem;
     font-weight: 900;
     margin-bottom: 1rem;
 }
 
-.cert-subtitle {
-    font-size: 1rem;
-    opacity: 0.7;
+.cert-subtitle-molecular {
+    font-size: 1.1rem;
+    opacity: 0.8;
 }
 
-/* CTA - FULL BLEED */
-.cta-fullbleed {
+/* POLICIES & COMMITTEES - MOLECULAR LIST */
+.policy-molecular-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.policy-molecular-item {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+    border-left: 4px solid var(--gold);
+    padding: 2rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    transition: all 0.3s;
+}
+
+.policy-molecular-item:hover {
+    background: rgba(212, 175, 55, 0.2);
+    transform: translateX(10px);
+}
+
+/* GLOBAL REACH - MOLECULAR STATS */
+.global-reach-molecular {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+    padding: 4rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%);
+    border: 2px solid var(--gold);
+}
+
+.reach-stat-molecular {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s;
+}
+
+.reach-stat-molecular:hover {
+    border-color: var(--gold);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+}
+
+.reach-percentage-molecular {
+    font-size: 6rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.reach-region-molecular {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+}
+
+.reach-countries-molecular {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* CTA - MOLECULAR FINALE */
+.cta-molecular {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, var(--black) 100%);
-    border-top: 3px solid var(--gold);
-    border-bottom: 3px solid var(--gold);
+    border-top: 4px solid var(--gold);
+    border-bottom: 4px solid var(--gold);
+    position: relative;
 }
 
-.cta-title-huge {
-    font-size: clamp(4rem, 12vw, 10rem);
+.cta-title-molecular {
+    font-size: clamp(5rem, 12vw, 11rem);
     font-weight: 900;
-    margin-bottom: 3rem;
-    line-height: 1;
+    margin-bottom: 4rem;
+    line-height: 0.95;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.btn {
+.btn-molecular {
     padding: 2rem 5rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     border: none;
     cursor: pointer;
-    transition: all 0.3s;
-    margin: 1rem;
+    transition: all 0.4s;
     background: var(--gold);
     color: var(--black);
+    margin: 1rem;
 }
 
-.btn:hover {
+.btn-molecular:hover {
     background: var(--gold-light);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 70px rgba(212, 175, 55, 0.6);
 }
 
 footer {
-    padding: 4rem;
+    padding: 5rem 4rem;
     text-align: center;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-@media (max-width: 1024px) {
-    .hero-unconventional { grid-template-columns: 1fr; }
-    .diagonal-split { grid-template-columns: 1fr; }
-    .diagonal-left { clip-path: none; }
-    .industries-grid-broken { grid-template-columns: 1fr; }
-    .industry-card-broken { grid-column: 1 / -1 !important; grid-row: auto !important; }
-    .timeline-item { grid-template-columns: 1fr; }
-    .timeline-item:nth-child(even) { grid-template-columns: 1fr; }
-    .timeline-item:nth-child(even) .timeline-year { order: 1; text-align: left; }
-    .timeline-item:nth-child(even) .timeline-content { order: 2; text-align: left; }
-    .app-grid { grid-template-columns: 1fr; }
-    .capabilities-scattered { position: static; }
-    .capability-item { position: static; margin-bottom: 1rem; }
-    .cert-grid { grid-template-columns: 1fr; }
+@media (max-width: 1200px) {
+    .content-grid-molecular { grid-template-columns: 1fr; }
+    .industry-molecular { grid-column: 1 / -1 !important; }
+    .timeline-node { grid-template-columns: 1fr; }
+    .timeline-node:nth-child(even) .timeline-year-molecular { order: 1; text-align: left; }
+    .timeline-node:nth-child(even) .timeline-content-molecular { order: 2; text-align: left; }
+    .products-molecular { grid-template-columns: 1fr; }
+    .app-row-molecular { grid-template-columns: 1fr; }
+    .app-industry-molecular { border-right: none; border-bottom: 2px solid var(--gold); }
+    .capabilities-molecular { position: static; min-height: auto; }
+    .capability-node { position: static; margin-bottom: 1.5rem; }
+    .lab-equipment-molecular { grid-template-columns: repeat(2, 1fr); }
+    .cert-molecular-grid { grid-template-columns: 1fr; }
+    .policy-molecular-list { grid-template-columns: 1fr; }
+    .global-reach-molecular { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
-    .header-content { padding: 1rem 2rem; }
-    nav ul { display: none; }
-    .hero-unconventional, .diagonal-split, .industries-broken, .timeline-asymmetric, .applications-unconventional, .capabilities-scattered, .certifications-bold { padding: 4rem 2rem; }
+    .minimal-header { left: 2rem; }
+    .molecular-nav { right: 2rem; }
+    .section-molecular { padding: 4rem 2rem; }
+    .hero-stats-molecular { flex-direction: column; gap: 3rem; }
+    .lab-equipment-molecular { grid-template-columns: 1fr; }
 }
     </style>
 </head>
@@ -663,336 +881,668 @@ footer {
         </div>
     </div>
 
-    <!-- MOLECULAR CANVAS - DOMINANT -->
-    <div class="molecular-canvas" id="molecules"></div>
+    <!-- MOLECULAR NETWORK - CORE METAPHOR -->
+    <div class="molecular-network" id="molecular-network"></div>
 
-    <!-- HEADER -->
-    <header id="header">
-        <div class="header-content">
-            <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-15T18-55-10-698Z-88cbe1d7-chat-image-1765824910680-0.jpg" alt="Devarsons" class="logo-img">
-            <nav>
-                <ul>
-                    <li><a href="#story">Story</a></li>
-                    <li><a href="#industries">Industries</a></li>
-                    <li><a href="#heritage">Heritage</a></li>
-                    <li><a href="#capabilities">Capabilities</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- MINIMAL HEADER -->
+    <div class="minimal-header" id="header">
+        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-15T18-55-10-698Z-88cbe1d7-chat-image-1765824910680-0.jpg" alt="Devarsons" class="logo-img">
+    </div>
+
+    <!-- MOLECULAR NAVIGATION -->
+    <div class="molecular-nav" id="molecular-nav">
+        <div class="nav-node" data-target="hero"><span class="nav-label">Origin</span></div>
+        <div class="nav-node" data-target="heritage"><span class="nav-label">Heritage</span></div>
+        <div class="nav-node" data-target="industries"><span class="nav-label">Industries</span></div>
+        <div class="nav-node" data-target="timeline"><span class="nav-label">Milestones</span></div>
+        <div class="nav-node" data-target="products"><span class="nav-label">Products</span></div>
+        <div class="nav-node" data-target="capabilities"><span class="nav-label">Capabilities</span></div>
+        <div class="nav-node" data-target="quality"><span class="nav-label">Quality</span></div>
+        <div class="nav-node" data-target="contact"><span class="nav-label">Contact</span></div>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main id="main">
-        <!-- HERO - UNCONVENTIONAL GRID -->
-        <section class="hero-unconventional">
-            <div class="hero-left">
-                <h1 class="hero-statement">
-                    We don't produce <strong>dyes</strong>.<br>
-                    We engineer <strong>molecular solutions</strong> for applications that don't exist yet.
+        <!-- HERO - MOLECULAR -->
+        <section class="hero-molecular" id="hero">
+            <div class="hero-content-center">
+                <h1 class="hero-statement-large">
+                    We don't produce <span class="molecular-highlight">dyes</span>.<br>
+                    We engineer <span class="molecular-highlight">molecular solutions</span><br>
+                    for applications that don't exist yet.
                 </h1>
-            </div>
-            <div class="hero-right">
-                <div class="hero-stat">50+</div>
-                <div class="hero-stat-label">Countries Worldwide</div>
+                
+                <div class="hero-stats-molecular">
+                    <div class="stat-molecular">
+                        <div class="stat-number-large">50+</div>
+                        <div class="stat-label-large">Countries</div>
+                    </div>
+                    <div class="stat-molecular">
+                        <div class="stat-number-large">100+</div>
+                        <div class="stat-label-large">Years</div>
+                    </div>
+                    <div class="stat-molecular">
+                        <div class="stat-number-large">8</div>
+                        <div class="stat-label-large">Industries</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- HERITAGE - MASSIVE -->
-        <section class="heritage-massive" id="heritage">
+        <section class="heritage-molecular" id="heritage">
             <div>
-                <div class="heritage-year-huge">1923</div>
-                <p class="heritage-statement">
+                <div class="heritage-year-massive">1923</div>
+                <p class="heritage-statement-large">
                     We existed before trends.<br>
                     We will exist after them.
                 </p>
-                <p class="heritage-emphasis">
+                <p class="heritage-emphasis-large">
                     A century of molecular innovation.
                 </p>
             </div>
         </section>
 
         <!-- QUOTE 1 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
+                <p class="quote-text-molecular">
                     Don't find customers for your products, find products for your customers.
                 </p>
-                <p class="quote-author">— Seth Godin</p>
+                <p class="quote-author-molecular">— Seth Godin</p>
             </div>
         </section>
 
-        <!-- DIAGONAL SPLIT - STORY -->
-        <section class="diagonal-split" id="story">
-            <div class="diagonal-left">
-                <h2 class="section-title-large">Application-Based Innovation</h2>
-                <p class="content-text">
-                    Established in 1923, the Devarsons group was established by the founding fathers as an application oriented manufacturer of dyes. The focus since inception was on being a "solution provider" rather than a dye supplier.
+        <!-- STORY -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Application-Based Innovation</h2>
+            
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+                    Established in 1923, the Devarsons group was established by the founding fathers as an application oriented manufacturer of dyes. The focus since inception was on being a <strong style="color: var(--gold);">"solution provider"</strong> rather than a dye supplier.
                 </p>
-                <p class="content-text">
-                    Manufacturing was established in 1960-70 with Solvent Yellow 14 and Solvent Red 24, targeting Cosmetic and Petroleum industries. Today, we're ISO 9001, ISO 14001 and OHSAS 18001 accredited.
+                
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+                    Manufacturing was established in 1960-70 with Solvent Yellow 14 and Solvent Red 24, targeting Cosmetic and Petroleum industries. Today, we're <strong style="color: var(--gold);">ISO 9001, ISO 14001 and OHSAS 18001</strong> accredited.
                 </p>
-                <p class="content-text">
-                    The emphasis within the organization is on developing new molecules or customizing current known molecules to meet highly specialized applications. Devarsons does not produce any one class of dye but rather an assortment of dyes with different chemistries to suit highly evolved applications.
+                
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8);">
+                    The emphasis within the organization is on <strong style="color: var(--gold);">developing new molecules or customizing current known molecules</strong> to meet highly specialized applications. Devarsons does not produce any one class of dye but rather an assortment of dyes with different chemistries to suit highly evolved applications.
                 </p>
-            </div>
-            <div class="diagonal-right">
-                <div>
-                    <h3 style="font-size: 2rem; color: var(--gold); margin-bottom: 2rem;">What Sets Us Apart</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.7);">
-                        Lean Management • SAP Integrated • Application Oriented • Debt Free • Chemistry Oriented • Responsible Sourcing • Strong EHS Commitment • Technical Assistance • Emphasis on Consistency • Backward Integrated • Application Development Expertise • Decisive & Agile • Customer-Centric
-                    </p>
-                </div>
             </div>
         </section>
 
         <!-- QUOTE 2 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
+                <p class="quote-text-molecular">
                     The secret of success is to do the common thing uncommonly well.
                 </p>
-                <p class="quote-author">— John D. Rockefeller Jr.</p>
+                <p class="quote-author-molecular">— John D. Rockefeller Jr.</p>
             </div>
         </section>
 
-        <!-- INDUSTRIES - BROKEN GRID -->
-        <section class="industries-broken" id="industries">
-            <h2 class="section-title-large">Industries We Transform</h2>
+        <!-- INDUSTRIES -->
+        <section class="section-molecular" id="industries">
+            <h2 class="section-title-molecular">Industries We Transform</h2>
             
-            <div class="industries-grid-broken">
-                <div class="industry-card-broken">
-                    <span class="industry-icon">🧪</span>
-                    <div class="industry-name">Cosmetics</div>
-                    <div class="industry-desc">EU Cosmetics, US FDA, Schedule Q India compliant</div>
-                    <div class="industry-details-hidden">Hair oil, kumkum, lipstick, toilet soap, eye liner, nail polish, shampoo. Compliant with heavy metal analysis and microbial count regulations.</div>
+            <div class="content-grid-molecular">
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">🧪</span>
+                    <div class="industry-name-molecular">Cosmetics</div>
+                    <div class="industry-desc-molecular">EU Cosmetics, US FDA, Schedule Q India compliant colorants</div>
+                    <div class="industry-details-molecular">Hair oil, kumkum, lipstick, toilet soap, eye liner, nail polish, shampoo. Our products comply with various regulations including heavy metal analysis, microbial counts and other parameters required as per global cosmetics regulations.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">⚗️</span>
-                    <div class="industry-name">Polymers</div>
-                    <div class="industry-desc">Master batch, PVC, engineering plastics</div>
-                    <div class="industry-details-hidden">High-performance PET, polyester fiber, EVA footwear, PU foam, monofilament yarn with consistent quality.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">⚗️</span>
+                    <div class="industry-name-molecular">Polymers & Plastics</div>
+                    <div class="industry-desc-molecular">Master batch, PVC, engineering plastics, reprocess granules</div>
+                    <div class="industry-details-molecular">High-performance PET master batch, polyester fiber, EVA footwear, PU foam, monofilament yarn, polycarbonate, polystyrene, polyolefin with consistent quality and minimal batch-to-batch variation.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">🛢️</span>
-                    <div class="industry-name">Petroleum</div>
-                    <div class="industry-desc">Engine oil, grease, coolant</div>
-                    <div class="industry-details-hidden">First to launch Blue Liquid Dye for kerosene in India (1992, IOCL). Superior thermal stability.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">🛢️</span>
+                    <div class="industry-name-molecular">Petroleum & Lubricants</div>
+                    <div class="industry-desc-molecular">Engine oil, grease, coolant colorants with superior thermal stability</div>
+                    <div class="industry-details-molecular">Application-specific dyes for fuel marking, lubricant identification. First to launch Blue Liquid Dye for kerosene in India (1992, IOCL collaboration). Excellent solubility and thermal stability up to 300°C.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">🔬</span>
-                    <div class="industry-name">NDT</div>
-                    <div class="industry-desc">Non-Destructive Testing applications</div>
-                    <div class="industry-details-hidden">Custom molecular development for aerospace, automotive, and industrial NDT methods.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">🔬</span>
+                    <div class="industry-name-molecular">Non-Destructive Testing</div>
+                    <div class="industry-desc-molecular">Highly specialized dyes for NDT applications in aerospace, automotive</div>
+                    <div class="industry-details-molecular">Custom molecular development for penetrant testing, magnetic particle inspection, and other advanced NDT methods. Meets ASTM and ISO standards for critical applications.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">💊</span>
-                    <div class="industry-name">Medical</div>
-                    <div class="industry-desc">Pharmaceutical-grade colorants</div>
-                    <div class="industry-details-hidden">Highly evolved applications with strict regulatory compliance.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">💊</span>
+                    <div class="industry-name-molecular">Medical & Pharmaceutical</div>
+                    <div class="industry-desc-molecular">Pharmaceutical-grade colorants for medical and diagnostic applications</div>
+                    <div class="industry-details-molecular">Highly evolved applications in medicine with strict regulatory compliance and quality control. USP/EP grade materials for pharmaceutical applications.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">🧵</span>
-                    <div class="industry-name">Textiles</div>
-                    <div class="industry-desc">High-end VAT dyes, metal complex</div>
-                    <div class="industry-details-hidden">Superior wash and light fastness for premium textile applications.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">🧵</span>
+                    <div class="industry-name-molecular">Textiles</div>
+                    <div class="industry-desc-molecular">High-end VAT dyes, acid, basic & direct colours, metal complex dyes</div>
+                    <div class="industry-details-molecular">Superior wash fastness, light fastness, and color consistency for premium textile applications. Eco-friendly formulations meeting GOTS and Oeko-Tex standards.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">🌾</span>
-                    <div class="industry-name">Agriculture</div>
-                    <div class="industry-desc">Seeds, pesticides, fertilizers</div>
-                    <div class="industry-details-hidden">Environmentally safe formulations compliant with agricultural regulations.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">🌾</span>
+                    <div class="industry-name-molecular">Agriculture</div>
+                    <div class="industry-desc-molecular">Colorants for seeds, pesticides, and fertilizers ensuring product identification</div>
+                    <div class="industry-details-molecular">Environmentally safe formulations compliant with agricultural regulations worldwide. Non-toxic, biodegradable options available for organic farming applications.</div>
                 </div>
                 
-                <div class="industry-card-broken">
-                    <span class="industry-icon">🖨️</span>
-                    <div class="industry-name">Inks & Paints</div>
-                    <div class="industry-desc">Printing ink, varnish, paint</div>
-                    <div class="industry-details-hidden">Fluorescent colorants for ink and markers with excellent lightfastness.</div>
+                <div class="industry-molecular">
+                    <span class="industry-icon-molecular">🖨️</span>
+                    <div class="industry-name-molecular">Inks & Paints</div>
+                    <div class="industry-desc-molecular">Adhesive, printing ink, varnish, paint colorants with excellent lightfastness</div>
+                    <div class="industry-details-molecular">Fluorescent colorants for ink and markers, specialized formulations for various printing and coating applications. Superior gloss and transparency for high-quality printing.</div>
                 </div>
             </div>
         </section>
 
         <!-- QUOTE 3 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
+                <p class="quote-text-molecular">
                     Build something 100 people love, not something 1 million people kind of like.
                 </p>
-                <p class="quote-author">— Brian Chesky, Airbnb</p>
+                <p class="quote-author-molecular">— Brian Chesky, Airbnb</p>
             </div>
         </section>
 
-        <!-- TIMELINE - ASYMMETRIC -->
-        <section class="timeline-asymmetric">
-            <h2 class="section-title-large" style="text-align: center; margin-bottom: 6rem;">Milestones</h2>
+        <!-- TIMELINE -->
+        <section class="section-molecular" id="timeline">
+            <h2 class="section-title-molecular">Milestones</h2>
             
-            <div class="timeline-item"><div class="timeline-year">1923</div><div class="timeline-content">Group established as solution provider</div></div>
-            <div class="timeline-item"><div class="timeline-year">1960-70</div><div class="timeline-content">Manufacturing established with Solvent Yellow 14 and Solvent Red 24</div></div>
-            <div class="timeline-item"><div class="timeline-year">1961</div><div class="timeline-content">Devarsons Industries Pvt Ltd incorporated</div></div>
-            <div class="timeline-item"><div class="timeline-year">1976</div><div class="timeline-content">Manufacturing facility at Odhav, GIDC, Ahmedabad</div></div>
-            <div class="timeline-item"><div class="timeline-year">1978</div><div class="timeline-content">First Export to ICI Australia</div></div>
-            <div class="timeline-item"><div class="timeline-year">1980</div><div class="timeline-content">Solvent dye range expanded</div></div>
-            <div class="timeline-item"><div class="timeline-year">1985</div><div class="timeline-content">DOS system for accounting</div></div>
-            <div class="timeline-item"><div class="timeline-year">1987</div><div class="timeline-content">Manufacturer in COLOUR INDEX International</div></div>
-            <div class="timeline-item"><div class="timeline-year">1990</div><div class="timeline-content">ICI UK sourcing partnership</div></div>
-            <div class="timeline-item"><div class="timeline-year">1992</div><div class="timeline-content">First Blue Liquid Dye for kerosene in India (IOCL)</div></div>
-            <div class="timeline-item"><div class="timeline-year">1995</div><div class="timeline-content">DOS system full implementation</div></div>
-            <div class="timeline-item"><div class="timeline-year">2003</div><div class="timeline-content">FDCA approval for food colorants</div></div>
-            <div class="timeline-item"><div class="timeline-year">2005</div><div class="timeline-content">ISO 9001, ISO 14001 certification</div></div>
-            <div class="timeline-item"><div class="timeline-year">2009</div><div class="timeline-content">BS OHSAS 18001 certification</div></div>
-            <div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-content">DSIR R&D and ERP software</div></div>
-            <div class="timeline-item"><div class="timeline-year">2013</div><div class="timeline-content">Gujarat Cleaner Production Award</div></div>
-            <div class="timeline-item"><div class="timeline-year">2018</div><div class="timeline-content">SAP Business One Implementation</div></div>
+            <div class="timeline-molecular">
+                <div class="timeline-chain">
+                    <div class="timeline-node"><div class="timeline-year-molecular">1923</div><div class="timeline-content-molecular">Devarsons Group established as solution provider, not dye supplier</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1960-70</div><div class="timeline-content-molecular">Manufacturing established with Solvent Yellow 14 and Solvent Red 24</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1961</div><div class="timeline-content-molecular">Devarsons Industries Pvt Ltd incorporated</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1976</div><div class="timeline-content-molecular">Manufacturing facility established at Odhav, GIDC, Ahmedabad</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1978</div><div class="timeline-content-molecular">First Export of Solvent Red 24 to ICI Australia - global markets entry</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1980</div><div class="timeline-content-molecular">Solvent dye range expanded significantly</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1985</div><div class="timeline-content-molecular">DOS system for accounting implemented</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1987</div><div class="timeline-content-molecular">Became manufacturer in COLOUR INDEX International</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1990</div><div class="timeline-content-molecular">ICI UK (later Zeneca, Avecia) sourcing partnership established</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1992</div><div class="timeline-content-molecular">Successfully developed Kerosene Marker Dye for IOCL. First Blue Liquid Dye for kerosene in India</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">1995</div><div class="timeline-content-molecular">DOS system full implementation across all departments</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">2003</div><div class="timeline-content-molecular">FDCA approval obtained for food colorants</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">2005</div><div class="timeline-content-molecular">Successfully Implemented, inspected & approved by ISO 9001, ISO 14001</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">2009</div><div class="timeline-content-molecular">BS OHSAS 18001 certification achieved</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">2012</div><div class="timeline-content-molecular">Set up DSIR recognized R&D and Pilot Plant. Established ERP software</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">2013</div><div class="timeline-content-molecular">Gujarat Cleaner Production Award 2012-13 for exemplary Cleaner Production implementation</div></div>
+                    <div class="timeline-node"><div class="timeline-year-molecular">2018</div><div class="timeline-content-molecular">Established SAP Business One software for streamlining end-to-end operations</div></div>
+                </div>
+            </div>
         </section>
 
         <!-- QUOTE 4 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
+                <p class="quote-text-molecular">
                     If you really look closely, most overnight successes took a long time.
                 </p>
-                <p class="quote-author">— Steve Jobs</p>
-            </div>
-        </section>
-
-        <!-- APPLICATION GROUPS - UNCONVENTIONAL TABLE -->
-        <section class="applications-unconventional">
-            <h2 class="section-title-large">Major Application Groups</h2>
-            
-            <div class="app-grid">
-                <div class="app-row">
-                    <div class="app-industry">General Plastic</div>
-                    <div class="app-list">Master Batch, PVC Film, PVC Pipe, PVC Profile, Engineering Compounding, Reprocess Granules, EVA Footwear, PU Foam, Monofilament Yarn, Polycarbonate, Polystyrene, Polyolefin</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">High Performance</div>
-                    <div class="app-list">PET Master Batch, Polyester Fiber</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">General Home Care</div>
-                    <div class="app-list">Detergent Cake, Speckles, Dishwash, Toilet Cleaner, Phenyl, Liquid Detergent</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">General Cosmetic</div>
-                    <div class="app-list">Hair Oil, Kumkum, Lipstick, Toilet Soap, Eye Liner, Nail Polish, Shampoo</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">General Lubricant</div>
-                    <div class="app-list">Engine Oil, Grease, Coolant</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">Food Colours</div>
-                    <div class="app-list">General Food, Bakery</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">Paint and Ink</div>
-                    <div class="app-list">Adhesive, Printing Ink, Varnish, Paint</div>
-                </div>
-                <div class="app-row">
-                    <div class="app-industry">Agro</div>
-                    <div class="app-list">Seeds, Pesticides, Fertilizer</div>
-                </div>
+                <p class="quote-author-molecular">— Steve Jobs, Founder Apple Inc.</p>
             </div>
         </section>
 
         <!-- QUOTE 5 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
-                    There is only one boss. The customer.
+                <p class="quote-text-molecular">
+                    Timing, perseverance, and ten years of trying will eventually make you look like an overnight success.
                 </p>
-                <p class="quote-author">— Sam Walton</p>
+                <p class="quote-author-molecular">— Biz Stone, Co-founder of Twitter</p>
             </div>
         </section>
 
-        <!-- CAPABILITIES - SCATTERED -->
-        <section class="capabilities-scattered" id="capabilities">
-            <h2 class="section-title-large" style="text-align: center; margin-bottom: 6rem;">Manufacturing Capabilities</h2>
+        <!-- GLOBAL REACH -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Global Reach</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Serving 50+ countries worldwide with 50% exports</p>
             
-            <div class="capability-item cap1">Condensation</div>
-            <div class="capability-item cap2">Bromination</div>
-            <div class="capability-item cap3">Diazotization</div>
-            <div class="capability-item cap4">Coupling Reaction</div>
-            <div class="capability-item cap5">Acylation & Alkylation</div>
-            <div class="capability-item cap6">Hydrolysis</div>
-            <div class="capability-item cap7">Oxidation & Reduction</div>
-            <div class="capability-item cap8">Distillation</div>
-            <div class="capability-item cap9">Milling</div>
+            <div class="global-reach-molecular">
+                <div class="reach-stat-molecular">
+                    <div class="reach-percentage-molecular">50%</div>
+                    <div class="reach-region-molecular">Americas</div>
+                    <div class="reach-countries-molecular">USA, Canada, South America, Mexico</div>
+                </div>
+                <div class="reach-stat-molecular">
+                    <div class="reach-percentage-molecular">40%</div>
+                    <div class="reach-region-molecular">Europe</div>
+                    <div class="reach-countries-molecular">EU, UK & Associated Countries</div>
+                </div>
+                <div class="reach-stat-molecular">
+                    <div class="reach-percentage-molecular">10%</div>
+                    <div class="reach-region-molecular">Asia Pacific</div>
+                    <div class="reach-countries-molecular">Far East & Other Countries</div>
+                </div>
+            </div>
         </section>
 
         <!-- QUOTE 6 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
-                    Nothing works better than just improving your product.
+                <p class="quote-text-molecular">
+                    Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.
                 </p>
-                <p class="quote-author">— Joel Spolsky</p>
+                <p class="quote-author-molecular">— Steve Jobs</p>
             </div>
         </section>
 
-        <!-- CERTIFICATIONS - BOLD BLOCKS -->
-        <section class="certifications-bold">
-            <h2 class="section-title-large" style="text-align: center; margin-bottom: 4rem;">Certifications</h2>
+        <!-- PRODUCTS -->
+        <section class="section-molecular" id="products">
+            <h2 class="section-title-molecular">Our Product Lines</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Comprehensive range of specialty colorants</p>
             
-            <div class="cert-grid">
-                <div class="cert-block">
-                    <div class="cert-title">ISO 9001</div>
-                    <div class="cert-subtitle">Quality Management</div>
+            <div class="products-molecular">
+                <div class="product-node">
+                    <div class="product-name-molecular">Solvent Colours</div>
+                    <div class="product-detail-molecular">Wide range for plastics and petroleum applications</div>
                 </div>
-                <div class="cert-block">
-                    <div class="cert-title">ISO 14001</div>
-                    <div class="cert-subtitle">Environmental</div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Oil Colours</div>
+                    <div class="product-detail-molecular">Specialized for lubricants and fuel applications</div>
                 </div>
-                <div class="cert-block">
-                    <div class="cert-title">OHSAS 18001</div>
-                    <div class="cert-subtitle">Health & Safety</div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Food Colours</div>
+                    <div class="product-detail-molecular">Approved by F.D.C.A</div>
                 </div>
-                <div class="cert-block">
-                    <div class="cert-title">Export House</div>
-                    <div class="cert-subtitle">Govt. Recognized</div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Cosmetics Colours</div>
+                    <div class="product-detail-molecular">EU Cosmetics, US FDA, Schedule Q India</div>
                 </div>
-                <div class="cert-block">
-                    <div class="cert-title">DSIR R&D</div>
-                    <div class="cert-subtitle">Research Facility</div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Acid, Basic & Direct Colours</div>
+                    <div class="product-detail-molecular">For textile and paper applications</div>
                 </div>
-                <div class="cert-block">
-                    <div class="cert-title">SEDEX</div>
-                    <div class="cert-subtitle">Responsible Sourcing</div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Metal Complex Dyes</div>
+                    <div class="product-detail-molecular">Superior fastness properties</div>
+                </div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Pigments & Emulsions</div>
+                    <div class="product-detail-molecular">High-performance pigment formulations</div>
+                </div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Lake Colours</div>
+                    <div class="product-detail-molecular">Insoluble pigment forms</div>
+                </div>
+                <div class="product-node">
+                    <div class="product-name-molecular">Liquid Colorants</div>
+                    <div class="product-detail-molecular">Ready-to-use liquid formulations</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPLICATION GROUPS -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Major Application Groups</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Detailed applications across industries</p>
+            
+            <div class="app-table-molecular">
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">General Plastic</div>
+                    <div class="app-list-molecular">Master Batch, PVC Film, PVC Pipe, PVC Profile, Engineering Compounding, Reprocess Granules, EVA Footwear, PU Foam, Monofilament Yarn, Polycarbonate, Polystyrene, Polyolefin</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">High Performance</div>
+                    <div class="app-list-molecular">PET Master Batch, Polyester Fiber</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">General Home Care</div>
+                    <div class="app-list-molecular">Detergent Cake, Speckles, Dishwash, Toilet Cleaner, Phenyl, Liquid Detergent</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">General Cosmetic</div>
+                    <div class="app-list-molecular">Hair Oil, Kumkum, Lipstick, Toilet Soap, Eye Liner, Nail Polish, Shampoo</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">General Lubricant</div>
+                    <div class="app-list-molecular">Engine Oil, Grease, Coolant</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">Food Colours</div>
+                    <div class="app-list-molecular">General Food, Bakery</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">Paint and Ink</div>
+                    <div class="app-list-molecular">Adhesive, Printing Ink, Varnish, Paint</div>
+                </div>
+                <div class="app-row-molecular">
+                    <div class="app-industry-molecular">Agro</div>
+                    <div class="app-list-molecular">Seeds, Pesticides, Fertilizer</div>
                 </div>
             </div>
         </section>
 
         <!-- QUOTE 7 -->
-        <section class="quote-massive">
+        <section class="quote-molecular">
             <div>
-                <p class="quote-text-huge">
-                    Quality is the best business plan.
+                <p class="quote-text-molecular">
+                    Great companies are built on great products.
                 </p>
-                <p class="quote-author">— John Lasseter</p>
+                <p class="quote-author-molecular">— Elon Musk</p>
             </div>
         </section>
 
-        <!-- CTA - FULL BLEED -->
-        <section class="cta-fullbleed" id="contact">
+        <!-- QUOTE 8 -->
+        <section class="quote-molecular">
             <div>
-                <h2 class="cta-title-huge">PARTNER WITH<br>EXCELLENCE</h2>
-                <button class="btn">Request Consultation</button>
+                <p class="quote-text-molecular">
+                    The biggest risk is not taking any risk. In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks.
+                </p>
+                <p class="quote-author-molecular">— Mark Zuckerberg</p>
+            </div>
+        </section>
+
+        <!-- CAPABILITIES -->
+        <section class="section-molecular" id="capabilities">
+            <h2 class="section-title-molecular">Manufacturing Capabilities</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Advanced reaction capabilities and processes</p>
+            
+            <div class="capabilities-molecular">
+                <div class="capability-node cap-1">Condensation</div>
+                <div class="capability-node cap-2">Bromination</div>
+                <div class="capability-node cap-3">Diazotization</div>
+                <div class="capability-node cap-4">Coupling Reaction</div>
+                <div class="capability-node cap-5">Acylation & Alkylation</div>
+                <div class="capability-node cap-6">Hydrolysis</div>
+                <div class="capability-node cap-7">Oxidation & Reduction</div>
+                <div class="capability-node cap-8">Distillation</div>
+                <div class="capability-node cap-9">Milling</div>
+            </div>
+        </section>
+
+        <!-- LAB EQUIPMENT -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Laboratory Equipment</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">State-of-the-art analytical capabilities</p>
+            
+            <div class="lab-equipment-molecular">
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">UV-Visible Spectrophotometers</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">Atomic Absorption Spectrophotometer</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">HPTLC</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">Karl-Fischer Titrator</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">Melting Point Analyzer</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">Moisture Analyzer</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">Modern Microbiological Lab</div>
+                </div>
+                <div class="lab-item-molecular">
+                    <div class="lab-name-molecular">pH Meter & Viscometer</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUOTE 9 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    Nothing works better than just improving your product.
+                </p>
+                <p class="quote-author-molecular">— Joel Spolsky, co-founder of Stack Overflow</p>
+            </div>
+        </section>
+
+        <!-- QUOTE 10 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    I never did anything worth doing by accident, nor did any of my inventions come by accident; they came by work.
+                </p>
+                <p class="quote-author-molecular">— Thomas Edison</p>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS -->
+        <section class="section-molecular" id="quality">
+            <h2 class="section-title-molecular">Certifications</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Committed to excellence through continuous improvement</p>
+            
+            <div class="cert-molecular-grid">
+                <div class="cert-molecular-block">
+                    <div class="cert-title-molecular">ISO 9001</div>
+                    <div class="cert-subtitle-molecular">Quality Management System</div>
+                </div>
+                <div class="cert-molecular-block">
+                    <div class="cert-title-molecular">ISO 14001</div>
+                    <div class="cert-subtitle-molecular">Environmental Management</div>
+                </div>
+                <div class="cert-molecular-block">
+                    <div class="cert-title-molecular">OHSAS 18001</div>
+                    <div class="cert-subtitle-molecular">Health & Safety</div>
+                </div>
+                <div class="cert-molecular-block">
+                    <div class="cert-title-molecular">Export House</div>
+                    <div class="cert-subtitle-molecular">Government Recognized</div>
+                </div>
+                <div class="cert-molecular-block">
+                    <div class="cert-title-molecular">DSIR R&D</div>
+                    <div class="cert-subtitle-molecular">Recognized Research Facility</div>
+                </div>
+                <div class="cert-molecular-block">
+                    <div class="cert-title-molecular">SEDEX</div>
+                    <div class="cert-subtitle-molecular">Responsible Sourcing</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUOTE 11 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    Quality is the best business plan.
+                </p>
+                <p class="quote-author-molecular">— John Lasseter, Disney/Pixar</p>
+            </div>
+        </section>
+
+        <!-- CUSTOMER CENTRIC -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Customer-Centric Approach</h2>
+            
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+                    We have spent years creating a culture around the customer and their needs. Our customer-centric approach has won the status of a <strong style="color: var(--gold);">preferred supplier/strategic partner</strong> from global petroleum, cosmetics and defense companies.
+                </p>
+                
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8);">
+                    Our commitment is to keep up our tradition of delivering customer value and having our valuable customers in the very heart of our corporate focus. The majority of our sales come from <strong style="color: var(--gold);">customized products developed specifically for customer applications</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- QUOTE 12 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    There is only one boss. The customer. And he can fire everybody in the company from the chairman on down, simply by spending his money somewhere else.
+                </p>
+                <p class="quote-author-molecular">— Sam Walton, Founder of Walmart</p>
+            </div>
+        </section>
+
+        <!-- QUOTE 13 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    The goal is not to do business with everybody who needs what you have. The goal is to do business with people who believe what you believe.
+                </p>
+                <p class="quote-author-molecular">— Simon Sinek</p>
+            </div>
+        </section>
+
+        <!-- QUOTE 14 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    Surprise and delight your customers.
+                </p>
+                <p class="quote-author-molecular">— Warren Buffett</p>
+            </div>
+        </section>
+
+        <!-- EHS -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Environmental, Health & Safety</h2>
+            
+            <div style="max-width: 1200px; margin: 0 auto; margin-bottom: 4rem;">
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8);">
+                    At Devarsons, protection of environment, occupational health and safety of employees is a prime and important objective for sustainable development. We aim to use natural resources efficiently and minimize the environmental impacts of our activities and products during their life cycles.
+                </p>
+            </div>
+            
+            <div class="content-grid-molecular" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="industry-molecular" style="grid-column: span 1;">
+                    <span class="industry-icon-molecular">♻️</span>
+                    <div class="industry-name-molecular">Water Recycling</div>
+                    <div class="industry-desc-molecular">State of the art water recycling project supported by solar power</div>
+                    <div class="industry-details-molecular">This treated water is pure enough that it can be recycled for boiler and cooling tower feed. Our effluent treatment plant was established in collaboration with US technology.</div>
+                </div>
+                
+                <div class="industry-molecular" style="grid-column: span 1;">
+                    <span class="industry-icon-molecular">🏆</span>
+                    <div class="industry-name-molecular">Cleaner Production</div>
+                    <div class="industry-desc-molecular">Gujarat Cleaner Production Award 2012-13</div>
+                    <div class="industry-details-molecular">Recognized by Government of Gujarat for exemplary application of Cleaner Production implementation in Small & Medium scale sector.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POLICIES -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Our Policies</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Comprehensive framework for responsible operations</p>
+            
+            <div class="policy-molecular-list">
+                <div class="policy-molecular-item">Harassment Policy</div>
+                <div class="policy-molecular-item">Grievance Policy</div>
+                <div class="policy-molecular-item">Ethical Trading Policy</div>
+                <div class="policy-molecular-item">HIV AIDS Policy</div>
+                <div class="policy-molecular-item">Equal Opportunities Policy</div>
+                <div class="policy-molecular-item">Anti-bribery Policy</div>
+                <div class="policy-molecular-item">Collective Bargaining Policy</div>
+            </div>
+        </section>
+
+        <!-- COMMITTEES -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Committees</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">Dedicated teams ensuring operational excellence</p>
+            
+            <div class="policy-molecular-list">
+                <div class="policy-molecular-item">Grievance Committee</div>
+                <div class="policy-molecular-item">Harassment Committee</div>
+                <div class="policy-molecular-item">Works Committee</div>
+                <div class="policy-molecular-item">Safety Committee</div>
+                <div class="policy-molecular-item">Canteen Committee</div>
+            </div>
+        </section>
+
+        <!-- QUOTE 15 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    The most dangerous poison is the feeling of achievement. The antidote is to every evening think what can be done better tomorrow.
+                </p>
+                <p class="quote-author-molecular">— Ingvar Kamprad, founder of IKEA</p>
+            </div>
+        </section>
+
+        <!-- QUOTE 16 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    Stay self-funded as long as possible.
+                </p>
+                <p class="quote-author-molecular">— Garrett Camp, founder of Uber</p>
+            </div>
+        </section>
+
+        <!-- CSO -->
+        <section class="section-molecular">
+            <h2 class="section-title-molecular">Corporate Social Obligation</h2>
+            
+            <div style="max-width: 1200px; margin: 0 auto; margin-bottom: 4rem;">
+                <p style="font-size: 1.4rem; line-height: 2; color: rgba(255,255,255,0.8);">
+                    At Devarsons, we believe in conducting business with the highest standards of integrity and ethics. Our CSR initiatives focus on community development, employee welfare, environmental sustainability, and ethical business practices.
+                </p>
+            </div>
+            
+            <div class="policy-molecular-list">
+                <div class="policy-molecular-item">CSR Policy</div>
+                <div class="policy-molecular-item">Nomination and Remuneration Policy</div>
+                <div class="policy-molecular-item">Privacy Policy</div>
+            </div>
+        </section>
+
+        <!-- QUOTE 17 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    The more honest and unique a person is, the more they can contribute to the world.
+                </p>
+                <p class="quote-author-molecular">— Maxime Lagacé</p>
+            </div>
+        </section>
+
+        <!-- QUOTE 18 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    You can worry about the competition or you can focus on what's ahead of you and drive fast.
+                </p>
+                <p class="quote-author-molecular">— Jack Dorsey, founder of Twitter</p>
+            </div>
+        </section>
+
+        <!-- QUOTE 19 -->
+        <section class="quote-molecular">
+            <div>
+                <p class="quote-text-molecular">
+                    Today's best practices lead to dead ends; the best paths are new and untried.
+                </p>
+                <p class="quote-author-molecular">— Peter Thiel, co-founder of PayPal</p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-molecular" id="contact">
+            <div>
+                <h2 class="cta-title-molecular">PARTNER WITH<br>EXCELLENCE</h2>
+                <p style="font-size: 1.5rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem; max-width: 800px;">
+                    Discover how our century of expertise and application-based innovation can solve your colorant challenges. Join global leaders who trust Devarsons.
+                </p>
+                <button class="btn-molecular">Request Consultation</button>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
-        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-15T18-55-10-698Z-88cbe1d7-chat-image-1765824910680-0.jpg" alt="Devarsons" style="height: 60px; margin-bottom: 1rem;">
-        <p style="color: rgba(255,255,255,0.6);">&copy; 2025 Devarsons Industries Private Limited</p>
-        <p style="color: var(--gold); margin-top: 0.5rem;">Since 1923 | Odhav, GIDC, Ahmedabad</p>
+        <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-15T18-55-10-698Z-88cbe1d7-chat-image-1765824910680-0.jpg" alt="Devarsons" style="height: 70px; margin-bottom: 1.5rem;">
+        <p style="color: rgba(255,255,255,0.6); font-size: 1rem;">&copy; 2025 Devarsons Industries Private Limited. All rights reserved.</p>
+        <p style="color: var(--gold); margin-top: 0.8rem; font-size: 1.1rem;">Group Established 1923 | The Colour Solution Company</p>
+        <p style="margin-top: 0.8rem; font-size: 0.95rem; color: rgba(255,255,255,0.5);">Odhav, GIDC, Ahmedabad, Gujarat, India</p>
     </footer>
 
     <script>
@@ -1000,6 +1550,7 @@ footer {
 window.addEventListener('load', () => {
     const intro = document.getElementById('intro');
     const header = document.getElementById('header');
+    const molecularNav = document.getElementById('molecular-nav');
     const main = document.getElementById('main');
     const lines = document.querySelectorAll('.intro-line');
     const reveal = document.querySelector('.intro-reveal');
@@ -1014,26 +1565,71 @@ window.addEventListener('load', () => {
         intro.classList.add('hidden');
         setTimeout(() => {
             header.classList.add('visible');
+            molecularNav.classList.add('visible');
             main.classList.add('visible');
+            initMolecularNetwork();
             initScrollAnimations();
         }, 1000);
     }, 7000);
 });
 
-// MOLECULAR CANVAS - MORE DOMINANT
-const molecularCanvas = document.getElementById('molecules');
-for (let i = 0; i < 25; i++) {
-    const molecule = document.createElement('div');
-    molecule.className = 'molecule-large';
-    molecule.style.left = Math.random() * 100 + '%';
-    molecule.style.top = Math.random() * 100 + '%';
-    molecule.style.animationDelay = Math.random() * 25 + 's';
-    molecularCanvas.appendChild(molecule);
+// MOLECULAR NETWORK - CORE METAPHOR
+function initMolecularNetwork() {
+    const network = document.getElementById('molecular-network');
+    const nodes = [];
+    const numNodes = 30;
+    
+    // Create nodes
+    for (let i = 0; i < numNodes; i++) {
+        const node = document.createElement('div');
+        node.className = 'molecule-node';
+        node.style.left = Math.random() * 100 + '%';
+        node.style.top = Math.random() * 100 + '%';
+        node.style.animationDelay = Math.random() * 4 + 's';
+        network.appendChild(node);
+        nodes.push({
+            element: node,
+            x: parseFloat(node.style.left),
+            y: parseFloat(node.style.top)
+        });
+    }
+    
+    // Create bonds between nearby nodes
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[j].x - nodes[i].x;
+            const dy = nodes[j].y - nodes[i].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 25) {
+                const bond = document.createElement('div');
+                bond.className = 'molecule-bond';
+                bond.style.left = nodes[i].x + '%';
+                bond.style.top = nodes[i].y + '%';
+                bond.style.width = distance + '%';
+                bond.style.transform = `rotate(${Math.atan2(dy, dx)}rad)`;
+                bond.style.animationDelay = Math.random() * 6 + 's';
+                network.appendChild(bond);
+            }
+        }
+    }
 }
+
+// MOLECULAR NAVIGATION
+const navNodes = document.querySelectorAll('.nav-node');
+navNodes.forEach(node => {
+    node.addEventListener('click', () => {
+        const target = node.getAttribute('data-target');
+        document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+        
+        navNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+    });
+});
 
 // SCROLL ANIMATIONS
 function initScrollAnimations() {
-    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineNodes = document.querySelectorAll('.timeline-node');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1043,25 +1639,27 @@ function initScrollAnimations() {
         });
     }, { threshold: 0.2 });
     
-    timelineItems.forEach(item => observer.observe(item));
+    timelineNodes.forEach(node => observer.observe(node));
+    
+    // Update nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navNodes.forEach(node => {
+            node.classList.remove('active');
+            if (node.getAttribute('data-target') === current) {
+                node.classList.add('active');
+            }
+        });
+    });
 }
-
-// HEADER HIDE ON SCROLL
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    const header = document.getElementById('header');
-    
-    if (currentScroll > 100) {
-        if (currentScroll > lastScroll) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-    }
-    
-    lastScroll = currentScroll;
-});
     </script>
 </body>
 </html>
