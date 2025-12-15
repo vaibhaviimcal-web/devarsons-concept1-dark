@@ -45,7 +45,6 @@ body {
     padding: 0 4rem;
 }
 
-/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -132,7 +131,6 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* HERO SECTION */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -275,7 +273,6 @@ nav a:hover::after {
     color: var(--black-pure);
 }
 
-/* SECTION STYLES */
 section {
     padding: 6rem 0;
     position: relative;
@@ -297,7 +294,6 @@ section {
     max-width: 800px;
 }
 
-/* WHO WE ARE */
 .who-we-are {
     background: linear-gradient(180deg, var(--black-pure) 0%, var(--black-primary) 100%);
 }
@@ -323,7 +319,6 @@ section {
     border-bottom: 1px solid var(--grey-light);
 }
 
-/* BUZZWORDS */
 .buzzwords-section {
     background: var(--black-primary);
     text-align: center;
@@ -358,7 +353,6 @@ section {
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
 }
 
-/* INDUSTRIES GRID */
 .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -440,7 +434,6 @@ section {
     max-height: 300px;
 }
 
-/* MILESTONES TIMELINE */
 .timeline-section {
     background: var(--black-primary);
 }
@@ -491,7 +484,6 @@ section {
     line-height: 1.7;
 }
 
-/* GLOBAL REACH */
 .global-reach {
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(10, 10, 10, 0.8) 100%);
     border-radius: 30px;
@@ -543,7 +535,6 @@ section {
     color: var(--grey-text);
 }
 
-/* PRODUCTS GRID */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -577,7 +568,43 @@ section {
     color: var(--grey-text);
 }
 
-/* CERTIFICATIONS */
+.applications-table {
+    margin-top: 3rem;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(26, 26, 26, 0.6);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+th {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--gold-light);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+td {
+    color: var(--grey-text);
+    font-size: 0.9rem;
+}
+
+tr:hover {
+    background: rgba(212, 175, 55, 0.05);
+}
+
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -612,7 +639,6 @@ section {
     color: var(--grey-text);
 }
 
-/* QUOTE BLOCKS */
 .quote-block {
     margin: 5rem 0;
     text-align: center;
@@ -648,7 +674,6 @@ section {
     font-weight: 600;
 }
 
-/* CAPABILITIES LIST */
 .capabilities-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -675,7 +700,6 @@ section {
     color: var(--gold-light);
 }
 
-/* CTA SECTION */
 .cta-section {
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
     border-radius: 30px;
@@ -697,7 +721,6 @@ section {
     margin: 0 auto 3rem;
 }
 
-/* FOOTER */
 footer {
     background: var(--black-pure);
     border-top: 1px solid rgba(212, 175, 55, 0.2);
@@ -714,7 +737,6 @@ footer {
     margin-bottom: 1rem;
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
     .container { padding: 0 2rem; }
     .header-content { padding: 1.5rem 2rem; }
@@ -730,6 +752,8 @@ footer {
     .btn { width: 100%; text-align: center; }
     .global-reach { padding: 2rem; }
     .cta-section { padding: 3rem 2rem; }
+    table { font-size: 0.8rem; }
+    th, td { padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -741,7 +765,6 @@ footer {
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
         <div class="header-content">
             <div class="logo-container">
@@ -758,13 +781,13 @@ footer {
                     <li><a href="#products">Products</a></li>
                     <li><a href="#quality">Quality & R&D</a></li>
                     <li><a href="#ehss">EHS&S</a></li>
+                    <li><a href="#cso">CSO</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="heritage-watermark">
@@ -773,7 +796,7 @@ footer {
         </div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">Group Established 1923</div>
+                <div class="hero-badge">Group Established 1923 • ISO 9001 • ISO 14001 • OHSAS 18001</div>
                 <h1 class="hero-title">
                     <span class="highlight">Application-Based</span>
                     Innovation in
@@ -794,14 +817,17 @@ footer {
         </div>
     </section>
 
-    <!-- WHO WE ARE -->
     <section class="who-we-are" id="profile">
         <div class="container">
             <h2 class="section-title">Who We Are</h2>
             <p class="section-subtitle">Over a century of excellence in specialty colorants</p>
             
             <p class="company-description">
-                Devarsons is an ISO 9001, ISO 14001 and OHSAS 18001 accredited company, developing and producing specialty colorants. The group was established in 1923 with manufacturing activity primarily based in Ahmedabad. With over 50 years of accumulated experience in Color Application, our product range is specifically designed to cater to customers in various industries such as Cosmetics, Crop Protection, Plastics, Petroleum, etc.
+                Established in 1923, the Devarsons group was established by the founding fathers as an application oriented manufacturer of dyes. The focus since inception was on being a "solution provider" rather than a dye supplier. The group was established as a trading company and later on manufacturing was established in 1960-70 with Solvent Yellow 14 and Solvent Red 24. The targeted industries were Cosmetic and Petroleum.
+            </p>
+            
+            <p class="company-description">
+                Devarsons is an ISO 9001, ISO 14001 and OHSAS 18001 accredited company, developing and producing specialty colorants. With over 50 years of accumulated experience in Color Application, our product range is specifically designed to cater to customers in various industries such as Cosmetics, Crop Protection, Plastics, Petroleum, etc.
             </p>
             
             <p class="company-description">
@@ -815,7 +841,6 @@ footer {
         </div>
     </section>
 
-    <!-- BUZZWORDS -->
     <section class="buzzwords-section">
         <div class="container">
             <h2 class="section-title">What Sets Us Apart</h2>
@@ -847,7 +872,6 @@ footer {
         </div>
     </section>
 
-    <!-- INDUSTRIES SERVED -->
     <section id="industries">
         <div class="container">
             <h2 class="section-title">Industries Served</h2>
@@ -859,16 +883,16 @@ footer {
                     <h3 class="industry-title">Cosmetics</h3>
                     <p class="industry-description">EU Cosmetics, US FDA, Schedule Q India compliant colorants for hair oil, kumkum, lipstick, toilet soap, eye liner, nail polish, and shampoo.</p>
                     <div class="industry-details">
-                        Our products comply with various regulations including heavy metal analysis, microbial counts and other parameters required as per global cosmetics regulations.
+                        Our products comply with various regulations including heavy metal analysis, microbial counts and other parameters required as per global cosmetics regulations. We provide complete technical support for formulation development.
                     </div>
                 </div>
                 
                 <div class="industry-card">
                     <span class="industry-icon">⚗️</span>
                     <h3 class="industry-title">Polymers & Plastics</h3>
-                    <p class="industry-description">General master batch, PVC film/pipe/profile, engineering plastics, reprocess granules, EVA footwear, PU foam, monofilament yarn.</p>
+                    <p class="industry-description">General master batch, PVC film/pipe/profile, engineering plastics, reprocess granules, EVA footwear, PU foam, monofilament yarn, polycarbonate, polystyrene, polyolefin.</p>
                     <div class="industry-details">
-                        Specialized colorants for high-performance PET master batch, polyester fiber, and engineering compounding with consistent quality and minimal batch-to-batch variation.
+                        Specialized colorants for high-performance PET master batch, polyester fiber, and engineering compounding with consistent quality and minimal batch-to-batch variation. Superior heat stability and migration resistance.
                     </div>
                 </div>
                 
@@ -877,7 +901,7 @@ footer {
                     <h3 class="industry-title">Fuel & Lubricants</h3>
                     <p class="industry-description">Engine oil, grease, coolant colorants with superior thermal stability and performance.</p>
                     <div class="industry-details">
-                        Application-specific dyes for fuel marking, lubricant identification. First to launch Blue Liquid Dye for kerosene in India (1992, IOCL collaboration).
+                        Application-specific dyes for fuel marking, lubricant identification. First to launch Blue Liquid Dye for kerosene in India (1992, IOCL collaboration). Excellent solubility and thermal stability up to 300°C.
                     </div>
                 </div>
                 
@@ -886,7 +910,7 @@ footer {
                     <h3 class="industry-title">Inks & Paints</h3>
                     <p class="industry-description">Adhesive, printing ink, varnish, paint colorants with excellent lightfastness and chemical resistance.</p>
                     <div class="industry-details">
-                        Fluorescent colorants for ink and markers, specialized formulations for various printing and coating applications.
+                        Fluorescent colorants for ink and markers, specialized formulations for various printing and coating applications. Superior gloss and transparency for high-quality printing.
                     </div>
                 </div>
                 
@@ -895,7 +919,7 @@ footer {
                     <h3 class="industry-title">Non-Destructive Testing</h3>
                     <p class="industry-description">Highly specialized dyes for NDT applications in aerospace, automotive, and industrial sectors.</p>
                     <div class="industry-details">
-                        Custom molecular development for penetrant testing, magnetic particle inspection, and other advanced NDT methods.
+                        Custom molecular development for penetrant testing, magnetic particle inspection, and other advanced NDT methods. Meets ASTM and ISO standards for critical applications.
                     </div>
                 </div>
                 
@@ -904,7 +928,7 @@ footer {
                     <h3 class="industry-title">Medical</h3>
                     <p class="industry-description">Pharmaceutical-grade colorants for medical and diagnostic applications.</p>
                     <div class="industry-details">
-                        Highly evolved applications in medicine with strict regulatory compliance and quality control.
+                        Highly evolved applications in medicine with strict regulatory compliance and quality control. USP/EP grade materials for pharmaceutical applications.
                     </div>
                 </div>
                 
@@ -913,7 +937,7 @@ footer {
                     <h3 class="industry-title">Textiles</h3>
                     <p class="industry-description">High-end VAT dyes, acid, basic & direct colours, metal complex dyes for textile applications.</p>
                     <div class="industry-details">
-                        Superior wash fastness, light fastness, and color consistency for premium textile applications.
+                        Superior wash fastness, light fastness, and color consistency for premium textile applications. Eco-friendly formulations meeting GOTS and Oeko-Tex standards.
                     </div>
                 </div>
                 
@@ -922,7 +946,7 @@ footer {
                     <h3 class="industry-title">Agriculture</h3>
                     <p class="industry-description">Colorants for seeds, pesticides, and fertilizers ensuring product identification and safety.</p>
                     <div class="industry-details">
-                        Environmentally safe formulations compliant with agricultural regulations worldwide.
+                        Environmentally safe formulations compliant with agricultural regulations worldwide. Non-toxic, biodegradable options available for organic farming applications.
                     </div>
                 </div>
             </div>
@@ -936,7 +960,6 @@ footer {
         </div>
     </section>
 
-    <!-- MILESTONES TIMELINE -->
     <section class="timeline-section">
         <div class="container">
             <h2 class="section-title">Milestones</h2>
@@ -958,9 +981,44 @@ footer {
                 </div>
                 
                 <div class="timeline-item">
+                    <div class="timeline-year">1961</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">Devarsons Industries Pvt Ltd incorporated.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1976</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">Manufacturing facility established at Odhav, GIDC, Ahmedabad.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
                     <div class="timeline-year">1978</div>
                     <div class="timeline-content">
                         <p class="timeline-text">First Export of Solvent Red 24 in container load to ICI Australia - marking our entry into global markets.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1980</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">Solvent dye range expanded significantly to meet growing global demand.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1985</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">DOS system for accounting implemented, modernizing business operations.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1987</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">Became manufacturer in COLOUR INDEX International, global recognition of our products.</p>
                     </div>
                 </div>
                 
@@ -979,9 +1037,30 @@ footer {
                 </div>
                 
                 <div class="timeline-item">
+                    <div class="timeline-year">1995</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">DOS system full implementation across all departments.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2003</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">FDCA approval obtained for food colorants, expanding into food industry.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
                     <div class="timeline-year">2005</div>
                     <div class="timeline-content">
                         <p class="timeline-text">Successfully Implemented, inspected & approved by ISO 9001, ISO 14001</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2009</div>
+                    <div class="timeline-content">
+                        <p class="timeline-text">BS OHSAS 18001 certification achieved, demonstrating commitment to health and safety.</p>
                     </div>
                 </div>
                 
@@ -995,7 +1074,7 @@ footer {
                 <div class="timeline-item">
                     <div class="timeline-year">2013</div>
                     <div class="timeline-content">
-                        <p class="timeline-text">Government of Gujarat, India awarded "Gujarat Cleaner Production Award 2012-13"</p>
+                        <p class="timeline-text">Government of Gujarat, India awarded "Gujarat Cleaner Production Award 2012-13" for exemplary application of Cleaner Production implementation in Small & Medium scale sector.</p>
                     </div>
                 </div>
                 
@@ -1013,15 +1092,21 @@ footer {
                 </p>
                 <p class="quote-author">— Steve Jobs, Founder Apple Inc.</p>
             </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "Timing, perseverance, and ten years of trying will eventually make you look like an overnight success."
+                </p>
+                <p class="quote-author">— Biz Stone, Co-founder of Twitter</p>
+            </div>
         </div>
     </section>
 
-    <!-- GLOBAL REACH -->
     <section>
         <div class="container">
             <div class="global-reach">
                 <h2 class="section-title" style="text-align: center;">Global Reach</h2>
-                <p class="section-subtitle" style="text-align: center; margin: 0 auto 3rem;">Serving 50+ countries worldwide</p>
+                <p class="section-subtitle" style="text-align: center; margin: 0 auto 3rem;">Serving 50+ countries worldwide with 50% exports</p>
                 
                 <div class="reach-stats">
                     <div class="reach-stat">
@@ -1041,10 +1126,16 @@ footer {
                     </div>
                 </div>
             </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work."
+                </p>
+                <p class="quote-author">— Steve Jobs</p>
+            </div>
         </div>
     </section>
 
-    <!-- PRODUCT LINES -->
     <section id="products">
         <div class="container">
             <h2 class="section-title">Our Product Lines</h2>
@@ -1089,20 +1180,78 @@ footer {
                 </div>
             </div>
             
+            <h3 class="section-title" style="margin-top: 6rem; font-size: 2.5rem;">Major Application Groups</h3>
+            <p class="section-subtitle">Detailed applications across industries</p>
+            
+            <div class="applications-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Industry</th>
+                            <th>Applications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>General Plastic</strong></td>
+                            <td>Master Batch, PVC Film, PVC Pipe, PVC Profile, Engineering Compounding, Reprocess Granules, EVA Footwear, PU Foam, Monofilament Yarn, Polycarbonate, Polystyrene, Polyolefin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>High Performance</strong></td>
+                            <td>PET Master Batch, Polyester Fiber</td>
+                        </tr>
+                        <tr>
+                            <td><strong>General Home Care</strong></td>
+                            <td>Detergent Cake, Speckles, Dishwash, Toilet Cleaner, Phenyl, Liquid Detergent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>General Cosmetic</strong></td>
+                            <td>Hair Oil, Kumkum, Lipstick, Toilet Soap, Eye Liner, Nail Polish, Shampoo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>General Lubricant</strong></td>
+                            <td>Engine Oil, Grease, Coolant</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Food Colours</strong></td>
+                            <td>General Food, Bakery</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Paint and Ink</strong></td>
+                            <td>Adhesive, Printing Ink, Varnish, Paint</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agro</strong></td>
+                            <td>Seeds, Pesticides, Fertilizer</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
             <div class="quote-block">
                 <p class="quote-text">
                     "Great companies are built on great products."
                 </p>
                 <p class="quote-author">— Elon Musk</p>
             </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "The biggest risk is not taking any risk. In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks."
+                </p>
+                <p class="quote-author">— Mark Zuckerberg</p>
+            </div>
         </div>
     </section>
 
-    <!-- MANUFACTURING CAPABILITIES -->
     <section id="manufacturing">
         <div class="container">
             <h2 class="section-title">Manufacturing Capabilities</h2>
             <p class="section-subtitle">Advanced reaction capabilities and processes</p>
+            
+            <p class="company-description">
+                Our manufacturing philosophy is based on Cleaner Production approach. We have customized software for long term planning of equipment design and flexible plants that can handle multiple chemistries. Our facility at Odhav, GIDC, Ahmedabad is strategically located with excellent connectivity.
+            </p>
             
             <div class="capabilities-list">
                 <div class="capability-item">
@@ -1134,20 +1283,64 @@ footer {
                 </div>
             </div>
             
+            <h3 class="section-title" style="margin-top: 6rem; font-size: 2.5rem;">Laboratory Equipment</h3>
+            <p class="section-subtitle">State-of-the-art analytical capabilities</p>
+            
+            <div class="capabilities-list">
+                <div class="capability-item">
+                    <div class="capability-name">UV-Visible Spectrophotometers</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Atomic Absorption Spectrophotometer</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">HPTLC</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Karl-Fischer Titrator</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Melting Point Analyzer</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Moisture Analyzer</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Modern Microbiological Lab</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">pH Meter & Viscometer</div>
+                </div>
+            </div>
+            
             <div class="quote-block">
                 <p class="quote-text">
                     "Nothing works better than just improving your product."
                 </p>
                 <p class="quote-author">— Joel Spolsky, co-founder of Stack Overflow</p>
             </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "I never did anything worth doing by accident, nor did any of my inventions come by accident; they came by work."
+                </p>
+                <p class="quote-author">— Thomas Edison</p>
+            </div>
         </div>
     </section>
 
-    <!-- CERTIFICATIONS -->
     <section id="quality">
         <div class="container">
-            <h2 class="section-title">Certifications & Accreditations</h2>
-            <p class="section-subtitle">Committed to quality, safety, and environmental excellence</p>
+            <h2 class="section-title">Quality & R&D</h2>
+            <p class="section-subtitle">Committed to excellence through continuous improvement</p>
+            
+            <p class="company-description">
+                Our Quality Management System adheres to ISO 9001 standards with comprehensive procedures for document control, regulatory compliance, customer complaint handling, supplier management, and training programs. We maintain strict control of records, management of change, formulation/BOM management, product manufacture, storage/warehousing, and laboratory procedures.
+            </p>
+            
+            <p class="company-description">
+                Our DSIR recognized R&D facility focuses on process improvement, new product development, production support, and analytical development. Our team has capabilities in condensation, bromination, diazotization, coupling, acylation/alkylation, hydrolysis, and oxidation/reduction processes.
+            </p>
             
             <div class="certifications-grid">
                 <div class="cert-badge">
@@ -1166,6 +1359,14 @@ footer {
                     <div class="cert-title">Export House</div>
                     <div class="cert-subtitle">Government Recognized</div>
                 </div>
+                <div class="cert-badge">
+                    <div class="cert-title">DSIR R&D</div>
+                    <div class="cert-subtitle">Recognized Research Facility</div>
+                </div>
+                <div class="cert-badge">
+                    <div class="cert-title">SEDEX</div>
+                    <div class="cert-subtitle">Responsible Sourcing</div>
+                </div>
             </div>
             
             <div class="quote-block">
@@ -1177,7 +1378,6 @@ footer {
         </div>
     </section>
 
-    <!-- CUSTOMER CENTRIC -->
     <section>
         <div class="container">
             <h2 class="section-title">Customer-Centric Approach</h2>
@@ -1188,7 +1388,7 @@ footer {
             </p>
             
             <p class="company-description">
-                Our commitment is to keep up our tradition of delivering customer value and having our valuable customers in the very heart of our corporate focus.
+                Our commitment is to keep up our tradition of delivering customer value and having our valuable customers in the very heart of our corporate focus. The majority of our sales come from customized products developed specifically for customer applications.
             </p>
             
             <div class="quote-block">
@@ -1204,10 +1404,16 @@ footer {
                 </p>
                 <p class="quote-author">— Simon Sinek</p>
             </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "Surprise and delight your customers."
+                </p>
+                <p class="quote-author">— Warren Buffett</p>
+            </div>
         </div>
     </section>
 
-    <!-- EHS SECTION -->
     <section id="ehss">
         <div class="container">
             <h2 class="section-title">Environmental, Health & Safety</h2>
@@ -1223,7 +1429,7 @@ footer {
                     <h3 class="industry-title">Water Recycling</h3>
                     <p class="industry-description">State of the art water recycling project supported by solar power.</p>
                     <div class="industry-details">
-                        This treated water is pure enough that it can be recycled for boiler and cooling tower feed, demonstrating our commitment to resource conservation.
+                        This treated water is pure enough that it can be recycled for boiler and cooling tower feed. Our effluent treatment plant was established in collaboration with US technology, demonstrating our commitment to resource conservation.
                     </div>
                 </div>
                 
@@ -1232,7 +1438,7 @@ footer {
                     <h3 class="industry-title">Cleaner Production</h3>
                     <p class="industry-description">Gujarat Cleaner Production Award 2012-13</p>
                     <div class="industry-details">
-                        Recognized by Government of Gujarat for exemplary application of Cleaner Production implementation in Small & Medium scale sector.
+                        Recognized by Government of Gujarat for exemplary application of Cleaner Production implementation in Small & Medium scale sector. This award validates our commitment to environmental excellence.
                     </div>
                 </div>
                 
@@ -1241,8 +1447,63 @@ footer {
                     <h3 class="industry-title">Responsible Sourcing</h3>
                     <p class="industry-description">SEDEX audit compliant with comprehensive policies</p>
                     <div class="industry-details">
-                        Covers Labour Laws, Environment, Health & Safety, and Business Practice with dedicated committees and policies.
+                        Covers 4 elements: Labour Laws, Environment, Health & Safety, Business Practice. We have 5 dedicated committees and 7 comprehensive policies ensuring ethical operations.
                     </div>
+                </div>
+                
+                <div class="industry-card">
+                    <span class="industry-icon">🛡️</span>
+                    <h3 class="industry-title">Emergency Response</h3>
+                    <p class="industry-description">Comprehensive emergency response procedures</p>
+                    <div class="industry-details">
+                        Well-defined protocols for handling emergencies, regular drills, and trained response teams ensuring safety of personnel and environment.
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-title" style="margin-top: 6rem; font-size: 2.5rem;">Our Policies</h3>
+            <p class="section-subtitle">Comprehensive framework for responsible operations</p>
+            
+            <div class="capabilities-list">
+                <div class="capability-item">
+                    <div class="capability-name">Harassment Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Grievance Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Ethical Trading Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">HIV AIDS Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Equal Opportunities Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Anti-bribery Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Collective Bargaining Policy</div>
+                </div>
+            </div>
+            
+            <h3 class="section-title" style="margin-top: 6rem; font-size: 2.5rem;">Committees</h3>
+            <div class="capabilities-list">
+                <div class="capability-item">
+                    <div class="capability-name">Grievance Committee</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Harassment Committee</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Works Committee</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Safety Committee</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Canteen Committee</div>
                 </div>
             </div>
             
@@ -1252,26 +1513,75 @@ footer {
                 </p>
                 <p class="quote-author">— Ingvar Kamprad, founder of IKEA</p>
             </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "Stay self-funded as long as possible."
+                </p>
+                <p class="quote-author">— Garrett Camp, founder of Uber</p>
+            </div>
         </div>
     </section>
 
-    <!-- CTA SECTION -->
+    <section id="cso">
+        <div class="container">
+            <h2 class="section-title">Corporate Social Obligation</h2>
+            <p class="section-subtitle">Committed to ethical business practices and social responsibility</p>
+            
+            <p class="company-description">
+                At Devarsons, we believe in conducting business with the highest standards of integrity and ethics. Our CSR initiatives focus on community development, employee welfare, environmental sustainability, and ethical business practices.
+            </p>
+            
+            <div class="capabilities-list">
+                <div class="capability-item">
+                    <div class="capability-name">CSR Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Nomination and Remuneration Policy</div>
+                </div>
+                <div class="capability-item">
+                    <div class="capability-name">Privacy Policy</div>
+                </div>
+            </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "The more honest and unique a person is, the more they can contribute to the world."
+                </p>
+                <p class="quote-author">— Maxime Lagacé</p>
+            </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "You can worry about the competition or you can focus on what's ahead of you and drive fast."
+                </p>
+                <p class="quote-author">— Jack Dorsey, founder of Twitter</p>
+            </div>
+            
+            <div class="quote-block">
+                <p class="quote-text">
+                    "Today's best practices lead to dead ends; the best paths are new and untried."
+                </p>
+                <p class="quote-author">— Peter Thiel, co-founder of PayPal</p>
+            </div>
+        </div>
+    </section>
+
     <section>
         <div class="container">
-            <div class="cta-section">
+            <div class="cta-section" id="contact">
                 <h2 class="cta-title">Partner with Excellence</h2>
                 <p class="cta-description">
                     Discover how our century of expertise and application-based innovation can solve your colorant challenges. Join global leaders who trust Devarsons.
                 </p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Request Consultation</a>
+                    <a href="mailto:info@devarsons.com" class="btn btn-primary">Request Consultation</a>
                     <a href="#products" class="btn btn-secondary">Download Brochure</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-logo">
@@ -1280,6 +1590,7 @@ footer {
             <div class="footer-content">
                 <p>&copy; 2025 Devarsons Industries Private Limited. All rights reserved.</p>
                 <p style="margin-top: 0.5rem; color: var(--gold-primary);">Group Established 1923 | The Colour Solution Company</p>
+                <p style="margin-top: 1rem; font-size: 0.85rem;">Odhav, GIDC, Ahmedabad, Gujarat, India</p>
             </div>
         </div>
     </footer>
@@ -1289,7 +1600,6 @@ footer {
     <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Scroll animations
 gsap.utils.toArray('.industry-card').forEach(card => {
     gsap.from(card, {
         scrollTrigger: {
@@ -1330,7 +1640,6 @@ gsap.from('.buzzword', {
     ease: 'back.out(1.7)'
 });
 
-// Header hide on scroll down
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
@@ -1345,7 +1654,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
