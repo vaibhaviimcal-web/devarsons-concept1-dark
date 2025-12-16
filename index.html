@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devarsons - Molecular Innovation Since 1923</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -24,134 +25,135 @@ body {
     overflow-x: hidden;
 }
 
-/* FORCE LOCK DURING INTRO */
 body.intro-locked {
     overflow: hidden;
     height: 100vh;
 }
 
 /* ========================================
-   CINEMATIC INTRO - FORCED 8 SECONDS
+   THREE.JS 3D INTRO CANVAS
 ======================================== */
-.cinematic-intro {
+#intro-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: var(--black);
     z-index: 10000;
+    background: var(--black);
+}
+
+#intro-canvas.exiting {
+    animation: fadeOut 2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* INTRO TEXT OVERLAY */
+.intro-text-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10001;
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 }
 
-.intro-words {
+.intro-text-3d {
     text-align: center;
 }
 
-.intro-word {
-    font-size: clamp(4rem, 10vw, 10rem);
+.intro-word-3d {
+    font-size: clamp(4rem, 10vw, 11rem);
     font-weight: 900;
     letter-spacing: -0.02em;
     opacity: 0;
     line-height: 1;
     margin: 1.5rem 0;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
 }
 
-/* DRAMATIC ANIMATIONS */
-.intro-word:nth-child(1) {
-    animation: flyInLeft 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+.intro-word-3d:nth-child(1) {
+    animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
     color: var(--white);
 }
 
-.intro-word:nth-child(2) {
-    animation: flyInRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+.intro-word-3d:nth-child(2) {
+    animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
     color: var(--gold);
 }
 
-.intro-word:nth-child(3) {
-    animation: flyInBottom 1.5s cubic-bezier(0.16, 1, 0.3, 1) 2.8s forwards;
+.intro-word-3d:nth-child(3) {
+    animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) 3.4s forwards;
     color: var(--white);
 }
 
-.intro-word:nth-child(4) {
-    animation: scaleIn 1.8s cubic-bezier(0.16, 1, 0.3, 1) 4.1s forwards;
+.intro-word-3d:nth-child(4) {
+    animation: fadeInScale 1.5s cubic-bezier(0.16, 1, 0.3, 1) 4.6s forwards;
     color: var(--gold);
-    font-size: clamp(5rem, 12vw, 12rem);
+    font-size: clamp(5rem, 12vw, 13rem);
 }
 
-@keyframes flyInLeft {
-    from { opacity: 0; transform: translateX(-120px) rotate(-8deg); }
-    to { opacity: 1; transform: translateX(0) rotate(0deg); }
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.7) translateZ(-200px); }
+    to { opacity: 1; transform: scale(1) translateZ(0); }
 }
 
-@keyframes flyInRight {
-    from { opacity: 0; transform: translateX(120px) rotate(8deg); }
-    to { opacity: 1; transform: translateX(0) rotate(0deg); }
-}
-
-@keyframes flyInBottom {
-    from { opacity: 0; transform: translateY(100px) scale(0.85); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.4); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.intro-brand-reveal {
+.intro-brand-3d {
     opacity: 0;
     margin-top: 6rem;
-    transform: translateY(40px);
 }
 
-.intro-brand-reveal.active {
-    animation: fadeInUp 2.2s cubic-bezier(0.16, 1, 0.3, 1) 5.9s forwards;
+.intro-brand-3d.active {
+    animation: fadeInUp 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeInUp {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.intro-brand-name {
+.brand-name-3d {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: clamp(3rem, 7vw, 6.5rem);
     font-weight: 700;
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
     letter-spacing: 0.08em;
+    text-shadow: 0 0 60px rgba(212, 175, 55, 0.6);
 }
 
-.intro-tagline {
-    font-size: clamp(1.2rem, 2.8vw, 2rem);
+.tagline-3d {
+    font-size: clamp(1.2rem, 2.8vw, 2.2rem);
     color: var(--gold);
     font-style: italic;
     letter-spacing: 0.3em;
     margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
 }
 
-.intro-heritage {
-    font-size: clamp(1.1rem, 2.2vw, 1.8rem);
-    color: rgba(255, 255, 255, 0.8);
+.heritage-3d {
+    font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+    color: rgba(255, 255, 255, 0.9);
     letter-spacing: 0.5em;
     font-weight: 700;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-.cinematic-intro.exiting {
-    animation: fadeOutScale 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    pointer-events: none;
-}
-
-@keyframes fadeOutScale {
-    to { opacity: 0; transform: scale(1.15); visibility: hidden; }
+.intro-text-overlay.exiting {
+    animation: fadeOut 2s ease-out forwards;
 }
 
 /* ========================================
-   MOLECULAR CORE - CHEMISTRY IS THE UI
+   MOLECULAR CORE
 ======================================== */
 .molecular-core {
     position: fixed;
@@ -170,7 +172,6 @@ body.intro-locked {
 
 @keyframes fadeIn { to { opacity: 1; } }
 
-/* CENTRAL ATOM - 1923 */
 .central-atom {
     position: fixed;
     top: 50%;
@@ -201,7 +202,6 @@ body.intro-locked {
     50% { transform: translate(-50%, -50%) scale(1.1); }
 }
 
-/* ORBITING MOLECULES */
 .molecule-orbit {
     position: absolute;
     width: 20px;
@@ -242,7 +242,6 @@ body.intro-locked {
     to { transform: rotate(360deg) translateX(500px) rotate(-360deg); }
 }
 
-/* MOLECULAR BONDS */
 .molecular-bond {
     position: absolute;
     height: 3px;
@@ -258,7 +257,7 @@ body.intro-locked {
 }
 
 /* ========================================
-   NAVIGATION - MOLECULAR INTERFACE
+   NAVIGATION
 ======================================== */
 .molecular-nav {
     position: fixed;
@@ -312,7 +311,7 @@ body.intro-locked {
 }
 
 /* ========================================
-   HEADER - MINIMAL LOGO
+   HEADER
 ======================================== */
 .minimal-logo {
     position: fixed;
@@ -329,7 +328,7 @@ body.intro-locked {
 .logo-img { height: 55px; }
 
 /* ========================================
-   MAIN CONTENT - MOLECULAR FLOW
+   MAIN CONTENT
 ======================================== */
 main {
     position: relative;
@@ -342,7 +341,6 @@ main.visible {
     animation: fadeIn 2s ease-out forwards;
 }
 
-/* MOLECULAR SECTION */
 .molecular-section {
     min-height: 100vh;
     display: flex;
@@ -352,7 +350,6 @@ main.visible {
     position: relative;
 }
 
-/* HERITAGE ATOM */
 .heritage-atom {
     text-align: center;
     max-width: 1400px;
@@ -366,7 +363,6 @@ main.visible {
     -webkit-text-fill-color: transparent;
     line-height: 0.75;
     margin-bottom: 4rem;
-    position: relative;
 }
 
 .atom-statement {
@@ -383,7 +379,6 @@ main.visible {
     color: var(--white);
 }
 
-/* QUOTE MOLECULE */
 .quote-molecule {
     min-height: 90vh;
     display: flex;
@@ -422,7 +417,6 @@ main.visible {
     font-style: normal;
 }
 
-/* CONTENT MOLECULE */
 .content-molecule {
     max-width: 1600px;
     margin: 0 auto;
@@ -453,7 +447,6 @@ main.visible {
     font-weight: 700;
 }
 
-/* INDUSTRY MOLECULES - BROKEN GRID */
 .industry-molecules {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -517,7 +510,6 @@ main.visible {
     margin-bottom: 1.5rem;
     color: var(--gold);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
 }
 
 .industry-desc {
@@ -543,7 +535,6 @@ main.visible {
     max-height: 400px;
 }
 
-/* CTA MOLECULE */
 .cta-molecule {
     min-height: 100vh;
     display: flex;
@@ -616,28 +607,28 @@ footer {
     </style>
 </head>
 <body class="intro-locked">
-    <!-- FORCED CINEMATIC INTRO -->
-    <div class="cinematic-intro" id="intro">
-        <div class="intro-words">
-            <div class="intro-word">BREAK THE</div>
-            <div class="intro-word">SHACKLES</div>
-            <div class="intro-word">CHALLENGE</div>
-            <div class="intro-word">BARRIERS</div>
+    <!-- THREE.JS 3D CANVAS -->
+    <canvas id="intro-canvas"></canvas>
+
+    <!-- TEXT OVERLAY -->
+    <div class="intro-text-overlay" id="text-overlay">
+        <div class="intro-text-3d">
+            <div class="intro-word-3d">BREAK THE</div>
+            <div class="intro-word-3d">SHACKLES</div>
+            <div class="intro-word-3d">CHALLENGE</div>
+            <div class="intro-word-3d">BARRIERS</div>
             
-            <div class="intro-brand-reveal">
-                <div class="intro-brand-name">devarsons</div>
-                <div class="intro-tagline">The Colour Solution Company</div>
-                <div class="intro-heritage">SINCE 1923</div>
+            <div class="intro-brand-3d">
+                <div class="brand-name-3d">devarsons</div>
+                <div class="tagline-3d">The Colour Solution Company</div>
+                <div class="heritage-3d">SINCE 1923</div>
             </div>
         </div>
     </div>
 
-    <!-- MOLECULAR CORE - CHEMISTRY IS THE UI -->
+    <!-- MOLECULAR CORE -->
     <div class="molecular-core" id="molecular-core">
-        <!-- CENTRAL ATOM - 1923 -->
         <div class="central-atom" id="central-atom">1923</div>
-        
-        <!-- ORBITING MOLECULES -->
         <div class="molecule-orbit orbit-1"></div>
         <div class="molecule-orbit orbit-2"></div>
         <div class="molecule-orbit orbit-3"></div>
@@ -660,7 +651,6 @@ footer {
 
     <!-- MAIN CONTENT -->
     <main id="main">
-        <!-- HERITAGE ATOM -->
         <section class="molecular-section" id="heritage">
             <div class="heritage-atom">
                 <div class="atom-year">1923</div>
@@ -674,7 +664,6 @@ footer {
             </div>
         </section>
 
-        <!-- QUOTE 1 -->
         <section class="quote-molecule">
             <div>
                 <p class="quote-text">
@@ -684,7 +673,6 @@ footer {
             </div>
         </section>
 
-        <!-- PHILOSOPHY -->
         <section class="content-molecule" id="philosophy">
             <h2 class="molecule-title">Application-Based Innovation</h2>
             
@@ -697,11 +685,10 @@ footer {
             </p>
             
             <p class="molecule-text">
-                The emphasis within the organization is on <strong>developing new molecules or customizing current known molecules</strong> to meet highly specialized applications. Devarsons does not produce any one class of dye but rather an assortment of dyes with different chemistries to suit highly evolved applications.
+                The emphasis within the organization is on <strong>developing new molecules or customizing current known molecules</strong> to meet highly specialized applications.
             </p>
         </section>
 
-        <!-- QUOTE 2 -->
         <section class="quote-molecule">
             <div>
                 <p class="quote-text">
@@ -711,7 +698,6 @@ footer {
             </div>
         </section>
 
-        <!-- INDUSTRIES -->
         <section class="content-molecule" id="industries">
             <h2 class="molecule-title">Industries We Transform</h2>
             
@@ -719,62 +705,61 @@ footer {
                 <div class="industry-molecule">
                     <span class="industry-icon">🧪</span>
                     <div class="industry-name">Cosmetics</div>
-                    <div class="industry-desc">EU Cosmetics, US FDA, Schedule Q India compliant colorants</div>
-                    <div class="industry-details">Hair oil, kumkum, lipstick, toilet soap, eye liner, nail polish, shampoo. Our products comply with various regulations including heavy metal analysis, microbial counts and other parameters required as per global cosmetics regulations.</div>
+                    <div class="industry-desc">EU Cosmetics, US FDA, Schedule Q India compliant</div>
+                    <div class="industry-details">Hair oil, kumkum, lipstick, toilet soap, eye liner, nail polish, shampoo. Compliant with heavy metal analysis and microbial count regulations.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">⚗️</span>
                     <div class="industry-name">Polymers</div>
                     <div class="industry-desc">Master batch, PVC, engineering plastics</div>
-                    <div class="industry-details">High-performance PET master batch, polyester fiber, EVA footwear, PU foam, monofilament yarn with consistent quality and minimal batch-to-batch variation.</div>
+                    <div class="industry-details">High-performance PET, polyester fiber, EVA footwear with consistent quality.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">🛢️</span>
                     <div class="industry-name">Petroleum</div>
-                    <div class="industry-desc">Engine oil, grease, coolant colorants</div>
-                    <div class="industry-details">First to launch Blue Liquid Dye for kerosene in India (1992, IOCL collaboration). Excellent solubility and thermal stability up to 300°C.</div>
+                    <div class="industry-desc">Engine oil, grease, coolant</div>
+                    <div class="industry-details">First Blue Liquid Dye for kerosene in India (1992, IOCL). Superior thermal stability.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">🔬</span>
                     <div class="industry-name">NDT</div>
-                    <div class="industry-desc">Non-Destructive Testing applications</div>
-                    <div class="industry-details">Custom molecular development for penetrant testing, magnetic particle inspection. Meets ASTM and ISO standards for critical applications.</div>
+                    <div class="industry-desc">Non-Destructive Testing</div>
+                    <div class="industry-details">Custom molecular development for aerospace and automotive applications.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">💊</span>
                     <div class="industry-name">Medical</div>
                     <div class="industry-desc">Pharmaceutical-grade colorants</div>
-                    <div class="industry-details">Highly evolved applications in medicine with strict regulatory compliance. USP/EP grade materials for pharmaceutical applications.</div>
+                    <div class="industry-details">USP/EP grade materials with strict regulatory compliance.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">🧵</span>
                     <div class="industry-name">Textiles</div>
-                    <div class="industry-desc">High-end VAT dyes, metal complex</div>
-                    <div class="industry-details">Superior wash fastness, light fastness, and color consistency for premium textile applications. Eco-friendly formulations meeting GOTS standards.</div>
+                    <div class="industry-desc">High-end VAT dyes</div>
+                    <div class="industry-details">Superior wash and light fastness for premium applications.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">🌾</span>
                     <div class="industry-name">Agriculture</div>
                     <div class="industry-desc">Seeds, pesticides, fertilizers</div>
-                    <div class="industry-details">Environmentally safe formulations compliant with agricultural regulations worldwide. Non-toxic, biodegradable options available.</div>
+                    <div class="industry-details">Environmentally safe, biodegradable formulations.</div>
                 </div>
                 
                 <div class="industry-molecule">
                     <span class="industry-icon">🖨️</span>
                     <div class="industry-name">Inks</div>
                     <div class="industry-desc">Printing ink, varnish, paint</div>
-                    <div class="industry-details">Fluorescent colorants for ink and markers. Superior gloss and transparency for high-quality printing applications.</div>
+                    <div class="industry-details">Fluorescent colorants with superior gloss and transparency.</div>
                 </div>
             </div>
         </section>
 
-        <!-- QUOTE 3 -->
         <section class="quote-molecule">
             <div>
                 <p class="quote-text">
@@ -784,61 +769,196 @@ footer {
             </div>
         </section>
 
-        <!-- CTA -->
         <section class="cta-molecule" id="contact">
             <div>
                 <h2 class="cta-title">PARTNER WITH<br>EXCELLENCE</h2>
                 <p class="cta-text">
-                    Discover how our century of expertise and application-based innovation can solve your colorant challenges.
+                    Discover how our century of expertise can solve your colorant challenges.
                 </p>
                 <button class="btn-molecule">Request Consultation</button>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer>
         <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/cab453ed-7d3e-4dfa-9012-038dbc50c1c5/2025-12-15T18-55-10-698Z-88cbe1d7-chat-image-1765824910680-0.jpg" alt="Devarsons" style="height: 75px; margin-bottom: 2rem;">
-        <p style="color: rgba(255,255,255,0.65); font-size: 1.05rem;">&copy; 2025 Devarsons Industries Private Limited. All rights reserved.</p>
-        <p style="color: var(--gold); margin-top: 1rem; font-size: 1.2rem; font-weight: 700;">Group Established 1923 | The Colour Solution Company</p>
-        <p style="margin-top: 1rem; font-size: 1rem; color: rgba(255,255,255,0.55);">Odhav, GIDC, Ahmedabad, Gujarat, India</p>
+        <p style="color: rgba(255,255,255,0.65); font-size: 1.05rem;">&copy; 2025 Devarsons Industries Private Limited</p>
+        <p style="color: var(--gold); margin-top: 1rem; font-size: 1.2rem; font-weight: 700;">Since 1923 | The Colour Solution Company</p>
     </footer>
 
     <script>
-// FORCED CINEMATIC INTRO - 8 SECONDS
+// THREE.JS 3D MOLECULAR INTRO
+let scene, camera, renderer, molecules = [], bonds = [];
+let animationId;
+
+function init3DIntro() {
+    const canvas = document.getElementById('intro-canvas');
+    
+    // Scene
+    scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x000000, 10, 50);
+    
+    // Camera
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 30;
+    
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 1);
+    
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    
+    const pointLight1 = new THREE.PointLight(0xD4AF37, 2, 100);
+    pointLight1.position.set(10, 10, 10);
+    scene.add(pointLight1);
+    
+    const pointLight2 = new THREE.PointLight(0xD4AF37, 1.5, 100);
+    pointLight2.position.set(-10, -10, 10);
+    scene.add(pointLight2);
+    
+    // Create molecular structure
+    createMolecularStructure();
+    
+    // Animation loop
+    animate3D();
+}
+
+function createMolecularStructure() {
+    const moleculeGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+    const moleculeMaterial = new THREE.MeshPhongMaterial({
+        color: 0xD4AF37,
+        emissive: 0xD4AF37,
+        emissiveIntensity: 0.5,
+        shininess: 100
+    });
+    
+    // Create 30 molecules in 3D space
+    for (let i = 0; i < 30; i++) {
+        const molecule = new THREE.Mesh(moleculeGeometry, moleculeMaterial);
+        
+        molecule.position.x = (Math.random() - 0.5) * 40;
+        molecule.position.y = (Math.random() - 0.5) * 40;
+        molecule.position.z = (Math.random() - 0.5) * 40;
+        
+        molecule.userData = {
+            velocity: new THREE.Vector3(
+                (Math.random() - 0.5) * 0.02,
+                (Math.random() - 0.5) * 0.02,
+                (Math.random() - 0.5) * 0.02
+            )
+        };
+        
+        scene.add(molecule);
+        molecules.push(molecule);
+    }
+    
+    // Create bonds between nearby molecules
+    const bondMaterial = new THREE.LineBasicMaterial({ color: 0xD4AF37, opacity: 0.3, transparent: true });
+    
+    for (let i = 0; i < molecules.length; i++) {
+        for (let j = i + 1; j < molecules.length; j++) {
+            const distance = molecules[i].position.distanceTo(molecules[j].position);
+            
+            if (distance < 15) {
+                const bondGeometry = new THREE.BufferGeometry().setFromPoints([
+                    molecules[i].position,
+                    molecules[j].position
+                ]);
+                const bond = new THREE.Line(bondGeometry, bondMaterial);
+                scene.add(bond);
+                bonds.push({ line: bond, mol1: i, mol2: j });
+            }
+        }
+    }
+}
+
+function animate3D() {
+    animationId = requestAnimationFrame(animate3D);
+    
+    // Rotate camera
+    camera.position.x = Math.sin(Date.now() * 0.0002) * 30;
+    camera.position.z = Math.cos(Date.now() * 0.0002) * 30;
+    camera.lookAt(scene.position);
+    
+    // Move molecules
+    molecules.forEach(molecule => {
+        molecule.position.add(molecule.userData.velocity);
+        
+        // Bounce off boundaries
+        if (Math.abs(molecule.position.x) > 20) molecule.userData.velocity.x *= -1;
+        if (Math.abs(molecule.position.y) > 20) molecule.userData.velocity.y *= -1;
+        if (Math.abs(molecule.position.z) > 20) molecule.userData.velocity.z *= -1;
+        
+        // Rotate
+        molecule.rotation.x += 0.01;
+        molecule.rotation.y += 0.01;
+    });
+    
+    // Update bonds
+    bonds.forEach(bond => {
+        const positions = bond.line.geometry.attributes.position.array;
+        positions[0] = molecules[bond.mol1].position.x;
+        positions[1] = molecules[bond.mol1].position.y;
+        positions[2] = molecules[bond.mol1].position.z;
+        positions[3] = molecules[bond.mol2].position.x;
+        positions[4] = molecules[bond.mol2].position.y;
+        positions[5] = molecules[bond.mol2].position.z;
+        bond.line.geometry.attributes.position.needsUpdate = true;
+    });
+    
+    renderer.render(scene, camera);
+}
+
+// INTRO SEQUENCE
 window.addEventListener('load', () => {
     const body = document.body;
-    const intro = document.getElementById('intro');
+    const canvas = document.getElementById('intro-canvas');
+    const textOverlay = document.getElementById('text-overlay');
     const molecularCore = document.getElementById('molecular-core');
     const centralAtom = document.getElementById('central-atom');
     const logo = document.getElementById('logo');
     const nav = document.getElementById('nav');
     const main = document.getElementById('main');
-    const brandReveal = document.querySelector('.intro-brand-reveal');
+    const brandReveal = document.querySelector('.intro-brand-3d');
     
-    // LOCK SCROLL
+    // Start 3D intro
+    init3DIntro();
+    
+    // Lock scroll
     body.classList.add('intro-locked');
     
-    // Trigger brand reveal
-    setTimeout(() => brandReveal.classList.add('active'), 5900);
+    // Brand reveal
+    setTimeout(() => brandReveal.classList.add('active'), 6000);
     
-    // EXIT INTRO AFTER 8 SECONDS
+    // Exit intro after 10 seconds
     setTimeout(() => {
-        intro.classList.add('exiting');
+        canvas.classList.add('exiting');
+        textOverlay.classList.add('exiting');
         
         setTimeout(() => {
+            // Stop 3D animation
+            cancelAnimationFrame(animationId);
+            canvas.style.display = 'none';
+            textOverlay.style.display = 'none';
+            
+            // Unlock scroll
             body.classList.remove('intro-locked');
+            
+            // Show main content
             molecularCore.classList.add('active');
             centralAtom.classList.add('visible');
             logo.classList.add('visible');
             nav.classList.add('visible');
             main.classList.add('visible');
             initMolecularBonds();
-        }, 1800);
-    }, 8000);
+        }, 2000);
+    }, 10000);
 });
 
-// MOLECULAR BONDS GENERATION
+// MOLECULAR BONDS
 function initMolecularBonds() {
     const core = document.getElementById('molecular-core');
     const bonds = 15;
@@ -855,7 +975,7 @@ function initMolecularBonds() {
     }
 }
 
-// MOLECULAR NAVIGATION
+// NAVIGATION
 const navMolecules = document.querySelectorAll('.nav-molecule');
 navMolecules.forEach(molecule => {
     molecule.addEventListener('click', () => {
@@ -867,7 +987,7 @@ navMolecules.forEach(molecule => {
     });
 });
 
-// UPDATE NAV ON SCROLL
+// Update nav on scroll
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
     let current = '';
@@ -884,6 +1004,15 @@ window.addEventListener('scroll', () => {
             molecule.classList.add('active');
         }
     });
+});
+
+// Resize handler
+window.addEventListener('resize', () => {
+    if (camera && renderer) {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
 });
     </script>
 </body>
